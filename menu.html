@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pengnas YBCI</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/ybci2.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+<style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+        font-family: 'Roboto', sans-serif;
+        background: linear-gradient(to bottom, #000000, #333333);
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        min-height:100vh;
+        color:#fff;
+        overflow-x:hidden;
+    }
+
+    /* Tanggal & Jam + greeting */
+    .datetime-container {
+        width:90%;
+        max-width:500px;
+        background: rgba(0,0,0,0.6);
+        padding:10px 15px;
+        border-radius:10px;
+        margin-top:20px;
+        margin-bottom:10px;
+        box-shadow:0 4px 10px rgba(0,0,0,0.3);
+        text-align:left;
+    }
+    .datetime-container .datetime {
+        font-size:16px;
+        font-weight:500;
+        color:#fff;
+    }
+    .datetime-container .greeting {
+        font-size:18px;
+        font-weight:700;
+        color:#fff;
+        margin-top:5px;
+    }
+
+    /* Slider */
+    .slider-container {
+        width:90%;
+        max-width:500px;
+        height:200px;
+        margin-bottom:20px;
+        position:relative;
+        overflow:hidden;
+        border-radius:20px;
+        box-shadow:0 6px 15px rgba(0,0,0,0.3);
+        touch-action: pan-y;
+    }
+    .slides {
+        display:flex;
+        width:300%;
+        transition: transform 0.5s ease-in-out;
+    }
+    .slide {
+        width:100%;
+        flex-shrink:0;
+    }
+    .slide img {
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        border-radius:20px;
+    }
+
+    /* Slider dots */
+    .dots {
+        position:absolute;
+        bottom:10px;
+        left:50%;
+        transform:translateX(-50%);
+        display:flex;
+        gap:8px;
+    }
+    .dot {
+        width:10px;
+        height:10px;
+        border-radius:50%;
+        background-color: rgba(255,255,255,0.7);
+        cursor:pointer;
+        transition: all 0.3s ease;
+    }
+    .dot.active { width:14px; height:14px; background-color:#fff; }
+
+    /* Grid Menu */
+    .grid {
+        display:grid;
+        grid-template-columns:repeat(3,1fr);
+        grid-template-rows:repeat(3,1fr);
+        gap:15px;
+        width:90%;
+        max-width:500px;
+        margin-bottom:30px;
+    }
+
+    /* Menu Item */
+    .menu-item {
+        position:relative;
+        background:#fff;
+        border-radius:50%;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        padding:20px;
+        cursor:pointer;
+        overflow:hidden;
+        transition:transform 0.3s, box-shadow 0.3s;
+        color:#333;
+    }
+    .menu-item:hover { transform: translateY(-8px) scale(1.05); box-shadow:0 10px 20px rgba(0,0,0,0.3); }
+    .menu-icon img { width:40px; height:40px; margin-bottom:10px; }
+    .menu-label { font-size:14px; font-weight:500; text-align:center; }
+
+    /* Ripple effect */
+    .ripple {
+        position:absolute;
+        border-radius:50%;
+        transform:scale(0);
+        animation:ripple 0.6s linear;
+        background: rgba(0,0,0,0.2);
+    }
+    @keyframes ripple {
+        to { transform:scale(4); opacity:0; }
+    }
+
+    @media(max-width:360px){
+        .menu-item { padding:15px; }
+        .menu-icon img { width:36px; height:36px; }
+        .slide { height:160px; }
+        .datetime-container { padding:8px 12px; }
+        .datetime-container .datetime { font-size:14px; }
+        .datetime-container .greeting { font-size:16px; }
+    }
+</style>
+</head>
+<body>
+
+<!-- Tanggal & Jam + Greeting -->
+<div class="datetime-container">
+    <div class="datetime" id="datetime"></div>
+    <div class="greeting">Hai Pengas</div>
+</div>
+
+<!-- Slider -->
+<div class="slider-container" id="slider">
+    <div class="slides">
+        <div class="slide"><img src="images/services/rakernas.jpg" alt="Slide 1"></div>
+        <div class="slide"><img src="images/services/rakernas.jpg" alt="Slide 2"></div>
+        <div class="slide"><img src="images/services/rakernas.jpg" alt="Slide 3"></div>
+    </div>
+    <div class="dots">
+        <div class="dot active"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+    </div>
+</div>
+
+<!-- Grid Menu -->
+<div class="grid">
+    <div class="menu-item" onclick="window.location.href='index.html'"><div class="menu-icon"><img src="https://img.icons8.com/color/48/000000/home.png"/></div><div class="menu-label">Web</div></div>
+    <div class="menu-item" onclick="window.location.href='member.html'">
+        <div class="menu-icon">
+            <img src="https://img.icons8.com/color/48/000000/user-group-man-man.png"/>
+        </div>
+        <div class="menu-label">Member</div>
+    </div>
+    <div class="menu-item" onclick="alert('Kamera diklik')"><div class="menu-icon"><img src="https://img.icons8.com/color/48/000000/camera.png"/></div><div class="menu-label">Galeri</div></div>
+    <div class="menu-item" onclick="window.location.href='Surat.html'"><div class="menu-icon"><img src="https://img.icons8.com/color/48/000000/chat.png"/></div><div class="menu-label">Surat</div></div>
+    <div class="menu-item" onclick="window.location.href='atribut.html'">
+        <div class="menu-icon">
+            <img src="https://img.icons8.com/color/48/000000/user-group-man-man.png"/>
+        </div>
+        <div class="menu-label">Atribut</div>
+    </div>
+    <div class="menu-item" onclick="alert('Musik diklik')"><div class="menu-icon"><img src="https://img.icons8.com/color/48/000000/musical-notes.png"/></div><div class="menu-label">Musik</div></div>
+    <div class="menu-item" onclick="alert('Pengaturan diklik')"><div class="menu-icon"><img src="https://img.icons8.com/color/48/000000/settings.png"/></div><div class="menu-label">Pengaturan</div></div>
+    <div class="menu-item" onclick="window.location.href='kalender.html'"><div class="menu-icon"><img src="https://img.icons8.com/color/48/000000/calendar.png"/></div><div class="menu-label">Kalender</div></div>
+    <div class="menu-item" onclick="alert('Lainnya diklik')"><div class="menu-icon"><img src="https://img.icons8.com/color/48/000000/star.png"/></div><div class="menu-label">Lainnya</div></div>
+</div>
+
+<script>
+    // Fungsi menampilkan tanggal & jam
+    function updateDateTime() {
+        const now = new Date();
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        const date = now.toLocaleDateString('id-ID', options);
+        const time = now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        document.getElementById('datetime').textContent = `${date} | ${time}`;
+    }
+    setInterval(updateDateTime, 1000);
+    updateDateTime();
+
+    // Slider swipe & auto
+    const slides = document.querySelector('.slides');
+    const dots = document.querySelectorAll('.dot');
+    let index = 0;
+    let startX = 0;
+    let currentTranslate = 0;
+    let isDragging = false;
+
+    function showSlide(i){
+        slides.style.transform = `translateX(-${i*100}%)`;
+        dots.forEach(dot=>dot.classList.remove('active'));
+        dots[i].classList.add('active');
+    }
+    function nextSlide(){ index = (index+1)%3; showSlide(index); }
+    setInterval(nextSlide, 3000);
+
+    dots.forEach((dot,i)=>dot.addEventListener('click',()=>{ index=i; showSlide(index); }));
+
+    const slider = document.getElementById('slider');
+    slider.addEventListener('touchstart', e => { startX = e.touches[0].clientX; isDragging=true; });
+    slider.addEventListener('touchmove', e => { if(!isDragging) return; const diff = e.touches[0].clientX - startX; currentTranslate = -index*slider.offsetWidth + diff; slides.style.transform = `translateX(${currentTranslate}px)`; });
+    slider.addEventListener('touchend', e => {
+        isDragging=false;
+        const diff = e.changedTouches[0].clientX - startX;
+        if(diff < -50){ index = (index+1)%3; } 
+        else if(diff > 50){ index = (index+2)%3; } 
+        showSlide(index);
+    });
+
+    // Ripple effect
+    const menuItems = document.querySelectorAll('.menu-item');
+    menuItems.forEach(item=>{
+        item.addEventListener('click', e=>{
+            const circle = document.createElement('span');
+            circle.classList.add('ripple');
+            item.appendChild(circle);
+            const rect = item.getBoundingClientRect();
+            circle.style.left = `${e.clientX - rect.left - circle.offsetWidth/2}px`;
+            circle.style.top = `${e.clientY - rect.top - circle.offsetHeight/2}px`;
+            setTimeout(()=>{ circle.remove(); },600);
+        });
+    });
+</script>
+
+</body>
+</html>
