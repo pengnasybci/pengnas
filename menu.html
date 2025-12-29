@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pengnas YBCI</title>
+
+<link rel="icon" href="images/ybci2.png">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#000000">
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+    font-family:'Roboto',sans-serif;
+    background:#121212;
+    color:#fff;
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+/* SPLASH */
+#splash{
+    position:fixed;
+    inset:0;
+    background:#000;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    z-index:5000;
+}
+#splash img{width:120px;animation:zoom 1.2s}
+#splash h3{margin-top:10px;font-weight:500}
+@keyframes zoom{from{transform:scale(.6);opacity:0}to{transform:scale(1);opacity:1}}
+
+/* HEADER */
+.datetime-container{
+    width:90%;
+    max-width:500px;
+    margin:20px auto 10px;
+    background:#1e1e1e;
+    padding:14px 16px;
+    border-radius:20px;
+    box-shadow:0 6px 18px rgba(0,0,0,.7);
+    opacity:0;
+    animation:fadeIn 0.8s forwards 1s;
+}
+.datetime{font-size:14px;color:#bbb}
+.greeting{font-size:18px;font-weight:600;margin-top:4px}
+
+/* SLIDER */
+.slider-container{
+    width:90%;
+    max-width:500px;
+    height:190px;
+    margin:10px auto 20px;
+    border-radius:22px;
+    overflow:hidden;
+    box-shadow:0 8px 20px rgba(0,0,0,.8);
+    position:relative;
+    opacity:0;
+    animation:fadeIn 0.8s forwards 0.5s;
+}
+.slides{display:flex;transition:transform 0.8s ease-in-out;}
+.slide{
+    width:100%;
+    flex-shrink:0;
+    overflow:hidden;
+    position:relative;
+    transform:scale(0.95);
+    transition:transform 0.8s ease;
+}
+.slide.active{transform:scale(1);}
+
+/* SLIDE IMAGE */
+.slide img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.8s ease;}
+.slide.active img{transform:scale(1.05);}
+
+/* DOTS */
+.dots{
+    position:absolute;
+    bottom:12px;
+    left:50%;
+    transform:translateX(-50%);
+    display:flex;
+    gap:10px
+}
+.dot{
+    width:10px;height:10px;border-radius:50%;
+    background:rgba(255,255,255,.4);
+    position:relative;
+    transition:all 0.3s ease;
+}
+.dot::after{
+    content:'';
+    position:absolute;
+    width:100%;height:100%;
+    border-radius:50%;
+    background:#fff;
+    transform:scale(0);
+    transition:transform 0.3s ease;
+    top:0; left:0;
+}
+.dot.active::after{transform:scale(1);}
+
+/* TOP MENU */
+.top-menu {
+    width:90%;
+    max-width:500px;
+    margin:10px auto 20px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+    opacity:0;
+    animation:fadeInUp 0.8s forwards 1.2s;
+}
+
+/* BOTTOM MENU */
+.bottom-menu {
+    width:90%;
+    max-width:500px;
+    margin:0 auto 90px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+    opacity:0;
+    animation:fadeInUp 0.8s forwards 1.4s;
+}
+
+/* MENU ITEM */
+.menu-item{
+    background:#1f1f1f;
+    border-radius:20px;
+    padding:16px 10px;
+    text-align:center;
+    box-shadow:0 4px 10px rgba(0,0,0,.6);
+    transition:transform 0.2s, box-shadow 0.2s;
+}
+.menu-item:active{
+    transform:scale(.95)
+}
+.menu-item:hover{
+    transform:translateY(-6px) scale(1.05);
+    box-shadow:0 8px 20px rgba(255,255,255,0.2);
+}
+.menu-icon img,.menu-icon svg{
+    width:38px;height:38px;
+    filter:drop-shadow(0 2px 4px #000);
+}
+.menu-label{
+    font-size:13px;
+    margin-top:6px
+}
+
+/* BOTTOM NAV */
+.bottom-nav{
+    position:fixed;
+    bottom:0;left:0;
+    width:100%;
+    height:64px;
+    background:#1c1c1c;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    box-shadow:0 -4px 20px rgba(0,0,0,.8);
+    z-index:1000
+}
+.nav-item{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    font-size:11px;
+    color:#aaa
+}
+.nav-item img{filter:invert(1);opacity:.6}
+.nav-item.active{color:#fff}
+.nav-item.active img{opacity:1}
+
+/* PULL REFRESH */
+#pullRefresh{
+    position:fixed;
+    top:-40px;
+    left:50%;
+    transform:translateX(-50%);
+    background:#1e1e1e;
+    padding:6px 14px;
+    border-radius:20px;
+    font-size:12px;
+    transition:.3s;
+    z-index:2000
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn{
+    from{opacity:0} to{opacity:1}
+}
+@keyframes fadeInUp{
+    from{opacity:0; transform:translateY(20px)}
+    to{opacity:1; transform:translateY(0)}
+}
+
+/* RESPONSIVE */
+@media (max-width:400px){
+    .top-menu, .bottom-menu{
+        grid-template-columns:repeat(3,1fr);
+        gap:10px;
+    }
+    .menu-icon img,.menu-icon svg{
+        width:32px;
+        height:32px;
+    }
+    .menu-label{
+        font-size:12px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div id="splash">
+    <img src="images/ybci2.png">
+    <h3>Pengnas YBCI</h3>
+</div>
+
+<div id="pullRefresh">↻ Refreshing...</div>
+
+<div class="datetime-container">
+    <div class="datetime" id="datetime"></div>
+    <div class="greeting">Hai Pengas</div>
+</div>
+
+<div class="slider-container">
+    <div class="slides" id="slides">
+        <div class="slide active"><img src="images/services/slide1.jpeg"></div>
+        <div class="slide"><img src="images/services/slide2.jpeg"></div>
+        <div class="slide"><img src="images/services/slide3.jpg"></div>
+    </div>
+    <div class="dots">
+        <div class="dot active"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+    </div>
+</div>
+
+<div class="grid top-menu">
+    <div class="menu-item" onclick="location.href='index.html'">
+        <div class="menu-icon"><img src="https://img.icons8.com/color/48/home.png"></div>
+        <div class="menu-label">Web</div>
+    </div>
+    <div class="menu-item" onclick="location.href='member.html'">
+        <div class="menu-icon"><img src="https://img.icons8.com/color/48/user-group-man-man.png"></div>
+        <div class="menu-label">Member</div>
+    </div>
+    <div class="menu-item">
+        <div class="menu-icon"><img src="https://img.icons8.com/color/48/camera.png"></div>
+        <div class="menu-label">Galeri</div>
+    </div>
+</div>
+
+<div class="grid bottom-menu">
+    <div class="menu-item" onclick="location.href='Surat.html'">
+        <div class="menu-icon"><img src="https://img.icons8.com/color/48/chat.png"></div>
+        <div class="menu-label">Surat</div>
+    </div>
+    <div class="menu-item" onclick="location.href='atribut.html'">
+        <div class="menu-icon"><img src="https://img.icons8.com/color/48/t-shirt.png"></div>
+        <div class="menu-label">Atribut</div>
+    </div>
+    <div class="menu-item">
+        <div class="menu-icon"><img src="https://img.icons8.com/color/48/musical-notes.png"></div>
+        <div class="menu-label">Musik</div>
+    </div>
+    <div class="menu-item" onclick="location.href='DesktopBerita.html'">
+        <div class="menu-icon">
+            <svg viewBox="0 0 64 64"><rect x="8" y="12" width="48" height="40" rx="6"/><path d="M16 22h32v4H16zm0 8h32v4H16zm0 8h18v4H16" fill="#fff"/></svg>
+        </div>
+        <div class="menu-label">Berita</div>
+    </div>
+    <div class="menu-item" onclick="location.href='kalender.html'">
+        <div class="menu-icon"><img src="https://img.icons8.com/color/48/calendar.png"></div>
+        <div class="menu-label">Kalender</div>
+    </div>
+    <div class="menu-item">
+        <div class="menu-icon"><img src="https://img.icons8.com/color/48/star.png"></div>
+        <div class="menu-label">Lainnya</div>
+    </div>
+</div>
+
+<div class="bottom-nav">
+    <div class="nav-item active"><img src="https://img.icons8.com/ios-filled/24/home.png"><span>Home</span></div>
+    <div class="nav-item"><img src="https://img.icons8.com/ios-filled/24/news.png"><span>Berita</span></div>
+    <div class="nav-item"><img src="https://img.icons8.com/ios-filled/24/calendar.png"><span>Agenda</span></div>
+    <div class="nav-item"><img src="https://img.icons8.com/ios-filled/24/user.png"><span>Profil</span></div>
+</div>
+
+<script>
+// SPLASH
+window.onload=()=>setTimeout(()=>document.getElementById('splash').style.display='none',1500)
+
+// DATE
+setInterval(()=>{
+const d=new Date()
+datetime.innerHTML=d.toLocaleDateString('id-ID',{weekday:'long',day:'numeric',month:'long',year:'numeric'})+" | "+d.toLocaleTimeString('id-ID')
+},1000)
+
+// SLIDER ZOOM
+let currentIndex=0;
+const slides=document.querySelectorAll('.slide');
+const dots=document.querySelectorAll('.dot');
+
+function goToSlide(index){
+    slides.forEach((s,i)=>{
+        s.classList.toggle('active', i===index);
+    });
+    dots.forEach((d,i)=>{
+        d.classList.toggle('active', i===index);
+    });
+}
+
+setInterval(()=>{
+    currentIndex=(currentIndex+1)%slides.length;
+    goToSlide(currentIndex);
+},3000);
+
+// PULL REFRESH
+let startY=0
+document.addEventListener('touchstart',e=>startY=e.touches[0].pageY)
+document.addEventListener('touchmove',e=>{
+    if(e.touches[0].pageY-startY>120){
+        pullRefresh.style.top='20px'
+        setTimeout(()=>location.reload(),800)
+    }
+})
+</script>
+
+</body>
+</html>
