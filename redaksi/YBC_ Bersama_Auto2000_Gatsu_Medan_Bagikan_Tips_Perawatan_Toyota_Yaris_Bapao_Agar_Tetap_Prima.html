@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YBCI Bersama Auto2000 Gatsu Medan Bagikan Tips Perawatan Toyota Yaris Bapao Agar Tetap Prima</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<link rel="icon" href="img/favicon.png">
+
+<style>
+body{
+    font-family:'Roboto',sans-serif;
+    background:#f0f2f5;
+    margin:0;
+}
+
+/* ================= IKLAN SAMPING ================= */
+.ads-left,.ads-right,.ads-left-bottom,.ads-right-bottom{
+    position:fixed;
+    width:12%;
+    max-width:220px;
+    background:#fff;
+    border-radius:10px;
+    box-shadow:0 4px 10px rgba(0,0,0,.15);
+    overflow:hidden;
+    z-index:999;
+
+    opacity:0;
+    transform:scale(.9);
+    transition:
+        opacity 1s ease,
+        transform 1s cubic-bezier(.34,1.56,.64,1);
+}
+
+.ads-left{
+    top:100px;
+    left:10px;
+    height:65vh;
+    max-height:700px;
+    transform:translateX(-50px) scale(.9);
+}
+
+.ads-right{
+    top:100px;
+    right:10px;
+    height:65vh;
+    max-height:700px;
+    transform:translateX(50px) scale(.9);
+}
+
+/* IKLAN BAWAH (TERPISAH) */
+.ads-left-bottom{
+    top:calc(100px + 65vh + 20px);
+    left:10px;
+    height:25vh;
+    max-height:200px;
+    transform:translateX(-50px) scale(.9);
+}
+
+.ads-right-bottom{
+    top:calc(100px + 65vh + 20px);
+    right:10px;
+    height:25vh;
+    max-height:200px;
+    transform:translateX(50px) scale(.9);
+}
+
+/* AKTIF */
+.ads-left.show,
+.ads-right.show,
+.ads-left-bottom.show,
+.ads-right-bottom.show{
+    opacity:1;
+    transform:translateX(0) scale(1);
+}
+
+/* ISI IKLAN */
+.ads-content{
+    display:flex;
+    flex-direction:column;
+    height:100%;
+}
+
+.ads-content img{
+    width:100%;
+    flex:1;
+    object-fit:cover;
+}
+
+.ads-button{
+    margin:10px;
+    padding:10px 5px;
+    background:#007bff;
+    color:#fff;
+    text-align:center;
+    text-decoration:none;
+    font-weight:700;
+    border-radius:8px;
+    transition:.3s;
+}
+
+.ads-button:hover{
+    background:#0056b3;
+    transform:scale(1.05);
+}
+/* KHUSUS IKLAN KANAN */
+.ads-right .ads-button{
+    background:#d32f2f; /* MERAH */
+}
+
+.ads-right .ads-button:hover{
+    background:#b71c1c; /* MERAH LEBIH GELAP */
+}
+
+
+/* HILANG DI MOBILE */
+@media(max-width:1024px){
+    .ads-left,.ads-right,.ads-left-bottom,.ads-right-bottom{display:none;}
+}
+
+/* ================= NAVBAR ================= */
+nav{
+    background:#007bff;
+    padding:15px 20px;
+}
+nav a{
+    color:#fff;
+    text-decoration:none;
+    font-weight:700;
+}
+
+/* ================= ARTIKEL ================= */
+.container{
+    padding:70px 20px;
+}
+.artikel-card{
+    background:#fff;
+    max-width:800px;
+    margin:60px auto;
+    border-radius:15px;
+    box-shadow:0 8px 20px rgba(0,0,0,.15);
+    position:relative;
+}
+.logo-overlay{
+    position:absolute;
+    top:-55px;
+    left:50%;
+    transform:translateX(-50%);
+    width:300px;
+}
+.main-image{width:100%;}
+.artikel-content{padding:25px;}
+.artikel-content h1{
+    font-size:2em;
+    margin-bottom:20px;
+}
+.artikel-content p{
+    font-size:1.1em;
+    line-height:1.8;
+    white-space:pre-line;
+}
+
+/* ================= POPUP MOBILE ================= */
+.mobile-popup{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.6);
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+    opacity:0;
+    transition:.4s;
+}
+.mobile-popup.show{opacity:1;}
+.popup-box{
+    width:85%;
+    max-width:350px;
+    background:#fff;
+    border-radius:12px;
+    overflow:hidden;
+    position:relative;
+}
+.popup-box img{width:100%;}
+.close-popup{
+    position:absolute;
+    top:8px;
+    right:10px;
+    font-size:24px;
+    cursor:pointer;
+    color:red;
+}
+@media(max-width:1024px){
+    .mobile-popup{display:flex;}
+}
+
+/* ================= FOOTER ================= */
+footer{
+    text-align:center;
+    padding:20px 0;
+    background:#f0f2f5;
+    color:#555;
+    font-size:0.9em;
+    margin-top:40px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- IKLAN KIRI -->
+<div class="ads-left" id="adsLeft">
+    <div class="ads-content">
+        <img src="img/iklan/kiri.jpeg" alt="Iklan Kiri">
+        <a href="https://siplohsoftware.xyz" target="_blank" class="ads-button">🔗 Want It</a>
+    </div>
+</div>
+
+<!-- IKLAN KANAN -->
+<div class="ads-right" id="adsRight">
+    <div class="ads-content">
+        <img src="img/iklan/kanan_toyota.jpeg" alt="Iklan Kanan">
+        <a href="https://www.toyotaauto2000gatsu.com/" target="_blank" class="ads-button">🔗 Auto 2000 Gatsu</a>
+    </div>
+</div>
+
+<!-- IKLAN KIRI BAWAH -->
+<div class="ads-left-bottom" id="adsLeftBottom">
+    <div class="ads-content">
+        <img src="img/iklan/popup.jpeg" alt="Iklan Kiri Bawah">
+        <a href="https://siplohsoftware.xyz" target="_blank" class="ads-button">🔗 More Info</a>
+    </div>
+</div>
+
+<!-- IKLAN KANAN BAWAH -->
+<div class="ads-right-bottom" id="adsRightBottom">
+    <div class="ads-content">
+        <img src="img/iklan/popup.jpeg" alt="Iklan Kanan Bawah">
+        <a href="https://siplohsoftware.xyz" target="_blank" class="ads-button">🔗 Check Now</a>
+    </div>
+</div>
+
+<nav>
+    <a href="https://ybci.org/Berita">⬅ Back</a>
+</nav>
+
+<div class="container">
+<div class="artikel-card">
+    
+    <img src="img/banner/2000.jpeg" class="main-image" alt="Banner Artikel">
+    <div class="artikel-content">
+        <h1>YBCI Bersama Auto2000 Gatsu Medan Bagikan Tips Perawatan Toyota Yaris Bapao Agar Tetap Prima</h1>
+        <p>
+<strong>Medan,29 Desember 2025-</strong> Toyota Yaris Bapao tidak hanya dikenal sebagai kendaraan dengan desain sporty dan performa andal, tetapi juga memiliki komunitas pengguna yang solid melalui <strong>Yaris Bapao Club Indonesia (YBCI)</strong>. Sebagai bentuk komitmen dalam memberikan edukasi kepada anggota komunitas, YBCI bekerja sama dengan Auto2000 Gatot Subroto (Gatsu) Medan menghadirkan informasi serta tips perawatan Toyota Yaris Bapao agar kendaraan tetap dalam kondisi prima.
+
+Kolaborasi ini bertujuan untuk meningkatkan pemahaman pemilik Toyota Yaris Bapao mengenai pentingnya perawatan berkala sesuai standar pabrikan demi menjaga performa, kenyamanan, dan keselamatan berkendara.
+
+<strong>Perawatan Rutin Jadi Fokus Utama</strong> 
+Dalam kerja sama ini, YBCI dan Auto2000 Gatsu Medan menekankan pentingnya perawatan rutin, di antaranya:
+  - Penggantian oli mesin secara berkala setiap 5.000–7.000 km
+  - Pemeriksaan tekanan dan kondisi ban sesuai rekomendasi pabrikan
+  - Penggantian filter udara dan filter bahan bakar secara terjadwal
+  - Pemeriksaan sistem pengereman untuk menjaga keamanan berkendara
+
+Seluruh proses perawatan tersebut dianjurkan dilakukan di bengkel resmi guna memastikan kualitas pengerjaan dan keaslian suku cadang.
+
+<strong>Kebersihan Interior dan Perawatan Eksterior Tak Kalah Penting</strong>
+Selain aspek teknis, YBCI bersama Auto2000 Gatsu Medan juga mengajak para anggota untuk memperhatikan kebersihan interior dan tampilan eksterior kendaraan. Interior yang bersih akan meningkatkan kenyamanan, sementara perawatan eksterior yang baik mampu menjaga tampilan serta nilai jual Toyota Yaris Bapao.
+
+Langkah perawatan yang dianjurkan meliputi pembersihan kabin secara rutin, penggunaan cairan pembersih khusus interior, pencucian kendaraan berkala, serta perlindungan cat mobil menggunakan wax atau coating.
+
+<strong>Perawatan Mesin Sesuai Standar Toyota</strong>
+Perawatan mesin juga menjadi perhatian utama dalam kolaborasi ini. Pemeriksaan busi, sabuk penggerak, serta cairan pendingin mesin secara berkala dinilai sangat penting untuk menjaga performa kendaraan tetap optimal dan mencegah kerusakan di kemudian hari.
+Auto2000 Gatsu Medan, dengan dukungan teknisi bersertifikasi dan fasilitas lengkap, siap memberikan layanan terbaik bagi anggota YBCI.
+
+Ketua Chapter <strong>YBCI Aceh–Sumut, E. Wandani,</strong> menyampaikan bahwa kerja sama ini diharapkan dapat memberikan manfaat nyata bagi seluruh anggota komunitas.
+<em> “Melalui kerja sama YBCI dengan Auto2000 Gatsu Medan, kami ingin mengedukasi seluruh member agar lebih peduli terhadap perawatan kendaraan sesuai standar Toyota. Dengan perawatan yang tepat dan berkala, Toyota Yaris Bapao akan selalu nyaman digunakan, aman, dan memiliki usia pakai yang lebih panjang,” ujar E. Wandani.
+</em>
+Ia juga menambahkan bahwa sinergi antara komunitas dan bengkel resmi menjadi langkah positif dalam mendukung kenyamanan berkendara para anggota YBCI.
+
+<strong>Sinergi Komunitas dan Bengkel Resmi</strong>
+Kerja sama antara YBCI dan Auto2000 Gatsu Medan menjadi bukti nyata sinergi positif antara komunitas otomotif dan bengkel resmi Toyota. Melalui kolaborasi ini, diharapkan anggota YBCI semakin memahami pentingnya perawatan kendaraan yang tepat, aman, dan sesuai standar pabrikan.
+
+YBCI mengajak seluruh anggotanya untuk mempercayakan perawatan Toyota Yaris Bapao di Auto2000 Gatsu Medan demi menjaga performa, kenyamanan, dan keamanan berkendara dalam jangka panjang.
+        </p>
+    </div>
+</div>
+</div>
+
+<!-- POPUP MOBILE -->
+<div class="mobile-popup" id="popupIklan">
+    <div class="popup-box">
+        <span class="close-popup" onclick="closePopup()">&times;</span>
+        <img src="img/iklan/popup.jpeg" alt="Popup Iklan">
+    </div>
+</div>
+
+<script>
+function closePopup(){
+    document.getElementById("popupIklan").style.display="none";
+}
+
+window.addEventListener("load",()=>{
+
+    /* IKLAN KIRI */
+    setTimeout(()=>{ document.getElementById("adsLeft").classList.add("show"); },300);
+
+    /* IKLAN KANAN */
+    setTimeout(()=>{ document.getElementById("adsRight").classList.add("show"); },1200);
+
+    /* IKLAN KIRI BAWAH */
+    setTimeout(()=>{ document.getElementById("adsLeftBottom").classList.add("show"); },1800);
+
+    /* IKLAN KANAN BAWAH */
+    setTimeout(()=>{ document.getElementById("adsRightBottom").classList.add("show"); },2100);
+
+    /* POPUP MOBILE */
+    if(window.innerWidth<=1024){
+        const popup=document.getElementById("popupIklan");
+        popup.style.display="flex";
+        setTimeout(()=>popup.classList.add("show"),50);
+    }
+});
+</script>
+
+<footer>
+    © 2025 YBCI Aceh–Sumut • All Rights Reserved
+</footer>
+
+</body>
+</html>

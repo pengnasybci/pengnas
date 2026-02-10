@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rapat Zoom Pengnas YBCI Bahas Baksos Ramadhan</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<link rel="icon" href="img/favicon.png">
+
+<style>
+body{
+    font-family:'Roboto',sans-serif;
+    background:#f0f2f5;
+    margin:0;
+}
+
+/* ================= IKLAN SAMPING ================= */
+.ads-left,.ads-right,.ads-left-bottom,.ads-right-bottom{
+    position:fixed;
+    width:12%;
+    max-width:220px;
+    background:#fff;
+    border-radius:10px;
+    box-shadow:0 4px 10px rgba(0,0,0,.15);
+    overflow:hidden;
+    z-index:999;
+    opacity:0;
+    transform:scale(.9);
+    transition:opacity 1s ease, transform 1s cubic-bezier(.34,1.56,.64,1);
+}
+
+.ads-left{
+    top:100px;
+    left:10px;
+    height:65vh;
+    transform:translateX(-50px) scale(.9);
+}
+.ads-right{
+    top:100px;
+    right:10px;
+    height:65vh;
+    transform:translateX(50px) scale(.9);
+}
+.ads-left-bottom{
+    top:calc(100px + 65vh + 20px);
+    left:10px;
+    height:25vh;
+    transform:translateX(-50px) scale(.9);
+}
+.ads-right-bottom{
+    top:calc(100px + 65vh + 20px);
+    right:10px;
+    height:25vh;
+    transform:translateX(50px) scale(.9);
+}
+
+.ads-left.show,
+.ads-right.show,
+.ads-left-bottom.show,
+.ads-right-bottom.show{
+    opacity:1;
+    transform:translateX(0) scale(1);
+}
+
+.ads-content{
+    display:flex;
+    flex-direction:column;
+    height:100%;
+}
+.ads-content img{
+    width:100%;
+    flex:1;
+    object-fit:cover;
+}
+.ads-button{
+    margin:10px;
+    padding:10px;
+    background:#007bff;
+    color:#fff;
+    text-align:center;
+    text-decoration:none;
+    font-weight:700;
+    border-radius:8px;
+    transition:.3s;
+}
+.ads-button:hover{
+    transform:scale(1.05);
+}
+.ads-right .ads-button{
+    background:#d32f2f;
+}
+.ads-right .ads-button:hover{
+    background:#b71c1c;
+}
+
+/* HILANG DI MOBILE */
+@media(max-width:1024px){
+    .ads-left,.ads-right,.ads-left-bottom,.ads-right-bottom{display:none;}
+}
+
+/* ================= NAVBAR ================= */
+nav{
+    background:#007bff;
+    padding:15px 20px;
+}
+nav a{
+    color:#fff;
+    text-decoration:none;
+    font-weight:700;
+}
+
+/* ================= ARTIKEL ================= */
+.container{
+    padding:70px 20px;
+}
+.artikel-card{
+    background:#fff;
+    max-width:800px;
+    margin:60px auto;
+    border-radius:15px;
+    box-shadow:0 8px 20px rgba(0,0,0,.15);
+}
+.main-image{
+    width:100%;
+}
+.artikel-content{
+    padding:25px;
+}
+.artikel-content h1{
+    font-size:2em;
+    margin-bottom:20px;
+    text-align:center;
+}
+
+/* 🔴 INI PERUBAHAN UTAMA */
+.artikel-content p{
+    font-size:1.1em;
+    line-height:1.8;
+    white-space:pre-line;
+    text-align:justify;
+    text-justify:inter-word;
+    hyphens:auto;
+}
+
+/* ================= POPUP MOBILE ================= */
+.mobile-popup{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.6);
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+    opacity:0;
+    transition:.4s;
+}
+.mobile-popup.show{opacity:1;}
+.popup-box{
+    width:85%;
+    max-width:350px;
+    background:#fff;
+    border-radius:12px;
+    overflow:hidden;
+    position:relative;
+}
+.popup-box img{width:100%;}
+.close-popup{
+    position:absolute;
+    top:8px;
+    right:10px;
+    font-size:24px;
+    cursor:pointer;
+    color:red;
+}
+@media(max-width:1024px){
+    .mobile-popup{display:flex;}
+}
+
+/* ================= FOOTER ================= */
+footer{
+    text-align:center;
+    padding:20px 0;
+    background:#f0f2f5;
+    color:#555;
+    font-size:.9em;
+}
+</style>
+</head>
+
+<body>
+
+<!-- IKLAN -->
+<div class="ads-left" id="adsLeft">
+    <div class="ads-content">
+        <img src="img/iklan/kiri.jpeg">
+        <a href="https://bawahtangga.web.id" target="_blank" class="ads-button">🔗 Bawah Tangga</a>
+    </div>
+</div>
+
+<div class="ads-right" id="adsRight">
+    <div class="ads-content">
+        <img src="img/iklan/kanan.jpeg">
+        <a href="https://bawahtangga.web.id/" target="_blank" class="ads-button">🔗 Bawah Tangga/a>
+    </div>
+</div>
+
+<div class="ads-left-bottom" id="adsLeftBottom">
+    <div class="ads-content">
+        <img src="img/iklan/popup.jpeg">
+        <a href="#" class="ads-button">🔗 More Info</a>
+    </div>
+</div>
+
+<div class="ads-right-bottom" id="adsRightBottom">
+    <div class="ads-content">
+        <img src="img/iklan/popup.jpeg">
+        <a href="#" class="ads-button">🔗 Check Now</a>
+    </div>
+</div>
+
+<nav>
+    <a href="https://ybci.org/Berita">⬅ Back</a>
+</nav>
+
+<div class="container">
+<div class="artikel-card">
+    <img src="img/banner/zoom.jpeg" class="main-image">
+
+    <div class="artikel-content">
+        <h1>Rapat Zoom Pengnas Yaris Bapao Club Indonesia Bahas Program Kerja Baksos Ramadhan</h1>
+
+        <p>
+<strong>Tangerang, 28 Januari 2026 –</strong> Pengurus Nasional Yaris Bapao Club Indonesia (YBCI) menggelar rapat virtual melalui Zoom untuk membahas program kerja Bakti Sosial (Baksos) pada bulan suci Ramadhan. Rapat ini juga membahas Bakti Sosial Nasional yang dirangkaikan dengan anniversary Ciayumajakuning.
+
+Rapat dipimpin langsung oleh Ketua Umum YBCI, Om Azis, dan diikuti oleh seluruh pengurus nasional dari berbagai daerah. Dalam pertemuan tersebut, pembahasan difokuskan pada strategi pelaksanaan kegiatan sosial, penentuan lokasi dan sasaran penerima manfaat, serta koordinasi antarwilayah untuk memastikan program berjalan efektif dan tepat sasaran.
+
+Om Azis menekankan pentingnya sinergi antar pengurus nasional agar kegiatan Bakti Sosial Ramadhan dapat terlaksana dengan baik. “Kegiatan ini bukan hanya sebagai wujud kepedulian kita terhadap masyarakat, tetapi juga sebagai ajang memperkuat silaturahmi antar anggota dan komunitas Ciayumajakuning,” ujarnya.
+
+
+Selain membahas Baksos, rapat juga membicarakan persiapan perayaan anniversary Ciayumajakuning yang akan menjadi bagian dari kegiatan nasional, dengan harapan dapat meningkatkan kebersamaan dan kebanggaan anggota terhadap komunitas YBCI.
+
+Rapat Zoom berjalan lancar dengan antusiasme tinggi dari seluruh peserta. Kesepakatan dan program kerja yang telah disusun diharapkan dapat direalisasikan secepat mungkin menjelang bulan suci Ramadhan.
+        </p>
+    </div>
+</div>
+</div>
+
+<!-- POPUP MOBILE -->
+<div class="mobile-popup" id="popupIklan">
+    <div class="popup-box">
+        <span class="close-popup" onclick="closePopup()">&times;</span>
+        <img src="img/iklan/popup.jpeg">
+    </div>
+</div>
+
+<script>
+function closePopup(){
+    document.getElementById("popupIklan").style.display="none";
+}
+
+window.addEventListener("load",()=>{
+
+    setTimeout(()=>adsLeft.classList.add("show"),300);
+    setTimeout(()=>adsRight.classList.add("show"),1200);
+    setTimeout(()=>adsLeftBottom.classList.add("show"),1800);
+    setTimeout(()=>adsRightBottom.classList.add("show"),2100);
+
+    if(window.innerWidth<=1024){
+        const popup=document.getElementById("popupIklan");
+        popup.style.display="flex";
+        setTimeout(()=>popup.classList.add("show"),50);
+    }
+});
+</script>
+
+<footer>
+© 2025 YBCI • All Rights Reserved
+</footer>
+
+</body>
+</html>

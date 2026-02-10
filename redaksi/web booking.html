@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Booking Lapangan Mini Soccer - Versi Canggih</title>
+<style>
+  body { font-family: Arial; margin:0; background:#f5f5f5; }
+  header { background:#4CAF50; color:white; text-align:center; padding:20px; }
+  main { padding:20px; max-width:800px; margin:auto; }
+  .lapangan, form, .booking-list { background:white; padding:15px; margin-bottom:15px; border-radius:5px; }
+  input, select, button { padding:10px; margin:5px 0; width:100%; box-sizing:border-box; }
+  button { background:#4CAF50; color:white; border:none; cursor:pointer; }
+  button:hover { background:#45a049; }
+  .booking-item { background:#e7f5e6; padding:10px; margin-bottom:10px; border-radius:5px; display:flex; justify-content:space-between; align-items:center; }
+  .booking-item button { background:red; padding:5px 10px; width:auto; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Booking Lapangan Mini Soccer</h1>
+</header>
+
+<main>
+  <section>
+    <h2>Daftar Lapangan</h2>
+    <div class="lapangan">
+      <h3>Lapangan A</h3>
+      <p>Harga: Rp100.000 / jam</p>
+    </div>
+    <div class="lapangan">
+      <h3>Lapangan B</h3>
+      <p>Harga: Rp120.000 / jam</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Form Booking</h2>
+    <form id="bookingForm">
+      <label>Nama Pemesan:</label>
+      <input type="text" id="nama" required>
+      <label>Pilih Lapangan:</label>
+      <select id="lapangan" required>
+        <option value="Lapangan A">Lapangan A</option>
+        <option value="Lapangan B">Lapangan B</option>
+      </select>
+      <label>Tanggal Booking:</label>
+      <input type="date" id="tanggal" required>
+      <label>Jam:</label>
+      <input type="time" id="jam" required>
+      <button type="submit">Booking Sekarang</button>
+    </form>
+  </section>
+
+  <section class="booking-list" id="bookingList">
+    <h2>Daftar Booking</h2>
+    <!-- Booking akan muncul di sini -->
+  </section>
+</main>
+
+<script>
+  const bookingForm = document.getElementById('bookingForm');
+  const bookingList = document.getElementById('bookingList');
+
+  // Ambil booking dari localStorage
+  let bookings = JSON.parse(localStorage.getItem('bookings')) || [];
+
+  function saveBookings() {
+    localStorage.setItem('bookings', JSON.stringify(bookings));
+  }
+
+  function renderBookings() {
+    bookingList.innerHTML = '<h2>Daftar Booking</h2>';
+    if(bookings.length === 0){
+      bookingList.innerHTML += '<p>Belum ada booking.</p>';
+      return;
+    }
+    bookings.forEach((b, index) => {
+      const div = document.createElement('div');
+      div.classList.add('booking-item');
+      div.innerHTML = `
+        <span>${b.nama} memesan ${b.lapangan} pada ${b.tanggal} pukul ${b.jam}</span>
+        <button onclick="deleteBooking(${index})">Hapus</button>
+      `;
+      bookingList.appendChild(div);
+    });
+  }
+
+  function deleteBooking(index) {
+    bookings.splice(index, 1);
+    saveBookings();
+    renderBookings();
+  }
+
+  bookingForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const nama = document.getElementById('nama').value;
+    const lapangan = document.getElementById('lapangan').value;
+    const tanggal = document.getElementById('tanggal').value;
+    const jam = document.getElementById('jam').value;
+
+    // Cek double-booking
+    const conflict = bookings.find(b => b.lapangan === lapangan && b.tanggal === tanggal && b.jam === jam);
+    if(conflict){
+      alert('Maaf, lapangan sudah dibooking pada tanggal dan jam ini!');
+      return;
+    }
+
+    const newBooking = {nama, lapangan, tanggal, jam};
+    bookings.push(newBooking);
+    saveBookings();
+    renderBookings();
+    bookingForm.reset();
+  });
+
+  // Render booking awal
+  renderBookings();
+</script>
+
+</body>
+</html>

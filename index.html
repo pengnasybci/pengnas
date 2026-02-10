@@ -1,0 +1,659 @@
+<!doctype html>
+<html lang="en">
+   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Yaris Bapao Club Indonesia</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/ybci2.png">
+
+    <!-- CSS FILES -->        
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;500&display=swap" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/templatemo-barber-shop.css" rel="stylesheet">
+<!--
+
+YBCI
+-->
+    </head>
+    
+    <!-- Popup Modern -->
+<div id="popup-overlay" style="
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.5s ease;">
+    <div style="
+        position: relative;
+        background: #fff;
+        padding: 15px;
+        border-radius: 12px;
+        max-width: 90%;
+        max-height: 90%;
+        text-align: center;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+        transform: scale(0.8);
+        transition: transform 0.5s ease;">
+        <span id="popup-close" style="
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #333;
+            transition: color 0.3s;">
+            &times;
+        </span>
+        <img src="images/popup.jpg" style="max-width: 100%; max-height: 80vh; border-radius: 12px;" alt="Popup Image">
+    </div>
+</div>
+
+<script>
+    const popupOverlay = document.getElementById('popup-overlay');
+    const popupClose = document.getElementById('popup-close');
+    const popupContent = popupOverlay.querySelector('div');
+
+    // Tampilkan popup dengan animasi fade-in
+    window.addEventListener('load', function() {
+        popupOverlay.style.display = 'flex';
+        setTimeout(() => {
+            popupOverlay.style.opacity = '1';
+            popupContent.style.transform = 'scale(1)';
+        }, 50);
+    });
+
+    // Tutup popup saat klik tombol X
+    popupClose.addEventListener('click', function() {
+        popupOverlay.style.opacity = '0';
+        popupContent.style.transform = 'scale(0.8)';
+        setTimeout(() => popupOverlay.style.display = 'none', 500);
+    });
+
+    // Tutup popup saat klik di luar gambar
+    popupOverlay.addEventListener('click', function(e) {
+        if(e.target === this) {
+            popupOverlay.style.opacity = '0';
+            popupContent.style.transform = 'scale(0.8)';
+            setTimeout(() => popupOverlay.style.display = 'none', 500);
+        }
+    });
+
+    // Hover efek tombol close
+    popupClose.addEventListener('mouseenter', () => popupClose.style.color = '#ff0000');
+    popupClose.addEventListener('mouseleave', () => popupClose.style.color = '#333');
+</script>
+
+
+    <body>
+
+        <div class="container-fluid">
+            <div class="row">
+
+                <button class="navbar-toggler d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <nav id="sidebarMenu" class="col-md-4 col-lg-3 d-md-block sidebar collapse p-0">
+
+                    <div class="position-sticky sidebar-sticky d-flex flex-column justify-content-center align-items-center">
+                        <a class="navbar-brand" href="index.html">
+                            <img src="images/ybci2.png" class="logo-image img-fluid" align="">
+                        </a>
+
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link click-scroll" href="#section_1">Home</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link click-scroll" href="#section_2">Our Story</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link click-scroll" href="#section_3">Upcoming Event</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link click-scroll" href="#section_4">official Merchandise</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="chapter.html">Chapter</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="kalender.html">Activity Calendar</a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="Berita.html">News</a>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://docs.google.com/forms/d/e/1FAIpQLSfAKdIef9el8vpaiAbzZBtJWqQb4l6uBra4leHgqrbcpUtE7w/viewform">Register</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                
+                <div class="col-md-8 ms-sm-auto col-lg-9 p-0">
+                    <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
+
+                            <div class="container">
+                                <div class="row">
+
+                                    <div class="col-lg-8 col-12">
+                                        <h1 class="text-white mb-lg-3 mb-4"><strong>YBCI <em></em></strong></h1>
+                                        <p class="text-black">Yaris Bapao Club Indonesia</p>
+                                        <br>
+                                        <a class="btn custom-btn custom-border-btn custom-btn-bg-white smoothscroll me-2 mb-2" href="#section_2">About Us</a>
+
+                                        <a class="btn custom-btn smoothscroll mb-2" href="#section_3">Upcoming Event</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="custom-block d-lg-flex flex-column justify-content-center align-items-center">
+                                <img src="images/vintage-chair-barbershop.jpg" class="custom-block-image img-fluid" alt="">
+
+                                <h4><strong class="text-white">Mari Menjadi Bagian Dari Kami.</strong></h4>
+
+                                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfAKdIef9el8vpaiAbzZBtJWqQb4l6uBra4leHgqrbcpUtE7w/viewform" class="smoothscroll btn custom-btn custom-btn-italic mt-3">Register NOW</a>
+                            </div>
+                    </section>
+
+
+                    <section class="about-section section-padding" id="section_2">
+                        <div class="container">
+                            <div class="row">
+
+                                <div class="col-lg-12 col-12 mx-auto">
+                                    <h2 class="mb-4">Sejarah Berdirinya YBCI</h2>
+
+                                    <div class="border-bottom pb-3 mb-5">
+                                        <p>
+Yaris Bapao Club Indonesia (YBCI) adalah
+komunitas penggemar Toyota Yaris generasi pertama, yang dikenal sebagai "Yaris Bakpao" karena bentuknya yang bulat dan menggemaskan. Komunitas ini bertujuan untuk mempererat tali persaudaraan dan silaturahmi antar anggota yang memiliki hobi sama terhadap mobil Yaris keluaran awal. YBCI secara aktif mengadakan acara seperti Jambore Nasional (Jamnas) untuk meningkatkan kebersamaan dan semangat persaudaraan di antara para anggotanya
+                                    </div>
+                                </div>
+
+                                    <h6 class="mb-5">Ketua Umum YBCI</h6>
+
+                                        <div class="col-lg-5 col-12 custom-block-bg-overlay-wrap me-lg-5 mb-5 mb-lg-0">
+                                            <img src="images/barber/portrait-male-hairdresser-with-scissors.jpg" class="custom-block-bg-overlay-image img-fluid" alt="">
+
+                                            <div class="team-info d-flex align-items-center flex-wrap">
+                                                <p class="mb-0">Azis</p>
+
+                                                <ul class="social-icon ms-auto">
+                                                    <li class="social-icon-item">
+                                                        <a href="https://www.facebook.com/share/1BM5j4VjdE/" class="social-icon-link bi-facebook">
+                                                        </a>
+                                                    </li>
+
+                                                    <li class="social-icon-item">
+                                                        <a href="https://www.instagram.com/azis_vonkdat?igsh=cWpxM3NjM3Ryd25w" class="social-icon-link bi-instagram">
+                                                        </a>
+                                                    </li>
+
+                                                    <li class="social-icon-item">
+                                                        <a href="#" class="social-icon-link bi-whatsapp">
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-5 col-12 custom-block-bg-overlay-wrap mt-4 mt-lg-0 mb-5 mb-lg-0">
+                                             <a href="images/struktur.jpg">
+                                            <img src="images/barber/portrait-mid-adult-bearded-male-barber-with-folded-arms.jpg" class="custom-block-bg-overlay-image img-fluid" alt="">
+
+                                            <div class="team-info d-flex align-items-center flex-wrap">
+                                                <p class="mb-0">Pengnas</p>
+
+                                                
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="featured-section section-padding">
+                        <div class="section-overlay"></div>
+
+                        <div class="container">
+                            <div class="row">
+
+                                <div class="col-lg-10 col-12 mx-auto">
+                                    <h2 class="mb-3">Standing & growing together</h2>
+
+                                    <p>Be a part of us as a sponsor</p>
+
+                                    <strong>+62 822-1052-5508</strong>
+                                </div>
+
+                            </div>
+                        </div>
+                    </section>
+
+
+                    <section class="services-section section-padding" id="section_3">
+                        <div class="container">
+                            <div class="row">
+
+                                <div class="col-lg-12 col-12">
+                                    <h2 class="mb-5">Upcoming Event</h2>
+                                </div>
+
+                                <div class="col-lg-6 col-12 mb-4">
+                                    <div class="services-thumb">
+                                        <img src="images/services/rakernas.jpg" class="services-image img-fluid" alt="">
+
+                                        <div class="services-info d-flex align-items-end">
+                                            <h4 class="mb-0">Rakernas</h4>
+
+                                            <strong class="services-thumb-price">16 Nov 2025</strong>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-12 mb-4">
+                                    <div class="services-thumb">
+                                        <img src="images/services/kopdargab.jpg" class="services-image img-fluid" alt="">
+
+                                        <div class="services-info d-flex align-items-end">
+                                            <h4 class="mb-0">Kopdargab</h4>
+
+                                            <strong class="services-thumb-price">Coming Soon</strong>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-12 mb-4 mb-lg-0">
+                                    <div class="services-thumb">
+                                        <img src="images/services/jamnas.jpg" class="services-image img-fluid" alt="">
+
+                                        <div class="services-info d-flex align-items-end">
+                                            <h4 class="mb-0">Jamnas</h4>
+
+                                            <strong class="services-thumb-price">Coming Soon</strong>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-12">
+                                    <div class="services-thumb">
+                                        <img src="images/services/munas.jpg" class="services-image img-fluid" alt="">
+
+                                        <div class="services-info d-flex align-items-end">
+                                            <h4 class="mb-0">Munas</h4>
+
+                                            <strong class="services-thumb-price">Coming Soon</strong>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="booking-section section-padding" id="booking-section">
+                    <div class="container">
+                        <div class="row">
+
+                            <div class="col-lg-10 col-12 mx-auto">
+                                <form action="#" method="post" class="custom-form booking-form" id="bb-booking-form" role="form">
+                                    <div class="text-center mb-5">
+                                        <h2 class="mb-1">Register Now</h2>
+
+                                        <p>Be part of us</p>
+                                    </div>
+
+                                    <div class="booking-form-body">
+                                        <div class="row">
+
+                                            <div class="col-lg-6 col-12">
+                                                <input type="text" name="bb-name" id="bb-name" class="form-control" placeholder="Company Name" required>
+                                            </div>
+
+                                            <div class="col-lg-6 col-12">
+                                               <input type="text" name="bb-name" id="bb-name" class="form-control" placeholder="Contact" required>
+                                            </div>
+                                        
+                                            <div class="col-lg-6 col-12">
+                                                <input type="text" name="bb-name" id="bb-name" class="form-control" placeholder="Address" required>
+                                            </div>
+
+                                            <div class="col-lg-6 col-12">
+                                                <select class="form-select form-control" name="bb-branch" id="bb-branch" aria-label="Type of business">
+                                                    <option selected="">Select Type of business</option>
+                                                    <option value="Grünberger">Workshopr</option>
+                                                    <option value="Behrenstraße">Spare parts</option>
+                                                    <option value="Weinbergsweg">Detailing</option>
+                                                </select>
+
+                                            </div>
+                                           
+                                        </div>
+
+                                        <textarea name="bb-message" rows="3" class="form-control" id="bb-message" placeholder="Comment (Optionals)"></textarea>
+
+                                        <div class="col-lg-4 col-md-10 col-8 mx-auto">
+                                            <button type="submit" class="form-control">Submit</button>
+                                        </div>
+                                    </div>
+                                </form>
+                        </div>
+                    </div>
+                </section>
+
+
+                    <section class="price-list-section section-padding" id="section_4">
+                        <div class="container">
+                            <div class="row">
+
+                                <div class="col-lg-8 col-12">
+                                    <div class="price-list-thumb-wrap">
+                                        <div class="mb-4">
+                                            <h2 class="mb-2">Official Merchandise</h2>
+
+                                            <strong>Starting at 70K</strong>
+                                        </div>
+
+                                        <div class="price-list-thumb">
+                                            <h6 class="d-flex">
+                                                Tumbler
+                                                <span class="price-list-thumb-divider"></span>
+
+                                                <strong>Rp. 70K</strong>
+                                            </h6>
+                                        </div>
+
+                                        <div class="price-list-thumb">
+                                            <h6 class="d-flex">
+                                                T-Shirt
+                                                <span class="price-list-thumb-divider"></span>
+
+                                                <strong>Rp. 100K</strong>
+                                            </h6>
+                                        </div>
+
+                                        <div class="price-list-thumb">
+                                            <h6 class="d-flex">
+                                               Vest
+                                                <span class="price-list-thumb-divider"></span>
+
+                                                <strong>Rp. 250K</strong>
+                                            </h6>
+                                        </div>
+
+                                        <div class="price-list-thumb">
+                                            <h6 class="d-flex">
+                                                Trucker Hat
+                                                <span class="price-list-thumb-divider"></span>
+
+                                                <strong>Rp. 110K</strong>
+                                            </h6>
+                                        </div>
+
+                                        <div class="price-list-thumb">
+                                            <h6 class="d-flex">
+                                                Jacket
+                                                <span class="price-list-thumb-divider"></span>
+
+                                                <strong>Rp. 230K</strong>
+                                            </h6>
+                                        </div>
+                                        <div class="price-list-thumb">
+                                            <h6 class="d-flex">
+                                                Lanyard
+                                                <span class="price-list-thumb-divider"></span>
+
+                                                <strong>Rp. 70K</strong>
+                                            </h6>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4 col-12 custom-block-bg-overlay-wrap mt-5 mb-5 mb-lg-0 mt-lg-0 pt-3 pt-lg-0">
+                                    <img src="images/vintage-chair-barbershop.jpg" class="custom-block-bg-overlay-image img-fluid" alt="">
+                                </div>
+
+                            </div>
+                        </div>
+                    </section>
+<style>
+    /* Efek pop-up saat dihover */
+    .merch-item img {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .merch-item img:hover {
+      transform: scale(1.15);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      z-index: 5;
+    }
+
+    /* Supaya pop-up tidak terpotong */
+    .merch-item {
+      overflow: visible;
+    }
+  </style>
+</head>
+
+<body>
+  <section class="py-5 text-center">
+    <h2 class="mb-4">Official Merchandise</h2>
+    <div class="container">
+      <div class="row justify-content-center text-center g-3">
+        <div class="col-lg-2 col-md-4 col-6 merch-item">
+          <img src="images/barber/tumbler.png" class="img-fluid rounded" alt="Tumbler">
+        </div>
+        <div class="col-lg-2 col-md-4 col-6 merch-item">
+          <img src="images/barber/kaos.png" class="img-fluid rounded" alt="T-Shirt">
+        </div>
+        <div class="col-lg-2 col-md-4 col-6 merch-item">
+          <img src="images/barber/rompi.png" class="img-fluid rounded" alt="Vest">
+        </div>
+        <div class="col-lg-2 col-md-4 col-6 merch-item">
+          <img src="images/barber/topi.png" class="img-fluid rounded" alt="Trucker Hat">
+        </div>
+        <div class="col-lg-2 col-md-4 col-6 merch-item">
+          <img src="images/barber/jaket.png" class="img-fluid rounded" alt="Jacket">
+        </div>
+        <div class="col-lg-2 col-md-4 col-6 merch-item">
+          <img src="images/barber/lanyard.png" class="img-fluid rounded" alt="Jacket">
+        </div>
+
+        
+     <!-- Tombol WhatsApp -->
+<a href="https://wa.me/6285223316412?text=Mau%20order%20merchandise-nya%20dong%20min" 
+   target="_blank" 
+   class="btn mt-3" 
+   style="padding: 12px 25px; font-size: 18px; border-radius: 8px; background-color: #cc0000; color: #fff;">
+    Order via WhatsApp
+</a>
+
+
+
+
+
+                <section class="contact-section" id="section_5">
+                    <div class="section-padding section-bg">
+                        <div class="container">
+                            <div class="row">   
+
+                                <div class="col-lg-8 col-12 mx-auto">
+                                    <h2 class="text-center">Say hello</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+ <section class="text-center">
+    <div class="container">
+      <h2>Sponsor & Partner</h2>
+      <div class="row justify-content-center g-3">
+        <div class="col-lg-2 col-md-4 col-6 popup-item">
+          <img src="images/barber/wantit.png" class="img-fluid rounded" alt="Sponsor1">
+        </div>
+        <div class="col-lg-2 col-md-4 col-6 popup-item">
+          <img src="images/barber/RJM.png" class="img-fluid rounded" alt="Sponsor2">
+        </div>
+        <div class="col-lg-2 col-md-4 col-6 popup-item">
+          <img src="images/barber/mas.png" class="img-fluid rounded" alt="Sponsor3">
+        </div>
+        <div class="col-lg-2 col-md-4 col-6 popup-item">
+          <img src="images/barber/street.png" class="img-fluid rounded" alt="Sponsor4">
+        </div>
+        <div class="col-lg-2 col-md-4 col-6 popup-item">
+          <img src="images/barber/wandi.png" class="img-fluid rounded" alt="Sponsor5">
+        </div>
+        <div class="col-lg-2 col-md-4 col-6 popup-item">
+          <img src="images/barber/rm.png" class="img-fluid rounded" alt="Sponsor6">
+        </div>
+      </div>
+    </div>
+  </section>
+                    <div class="section-padding">
+                        <div class="container">
+                            <div class="row">
+
+                                <div class="col-lg-6 col-12">
+                                    <h5 class="mb-3"><strong>Contact</strong> Information</h5>
+
+                                    <p class="text-white d-flex mb-1">
+                                        <a href="tel: 120-240-3600" class="site-footer-link">
+                                            +62 822-1052-5508
+                                        </a>
+                                    </p>
+
+                                    <p class="text-white d-flex">
+                                        <a href="mailto:info@yourgmail.com" class="site-footer-link">
+                                            Yarisbapaoclubindonesia@gmail.com
+                                        </a>
+                                    </p>
+
+                                    <ul class="social-icon">
+                                        <li class="social-icon-item">
+                                            <a href="https://web.facebook.com/groups/193809601868961/?locale=id_ID&_rdc=1&_rdr" class="social-icon-link bi-facebook">
+                                            </a>
+                                        </li>
+            
+                                       
+                                        <li class="social-icon-item">
+                                            <a href="https://www.instagram.com/yarisbapao/" class="social-icon-link bi-instagram">
+                                            </a>
+                                        </li>
+
+                                        <li class="social-icon-item">
+                                            <a href="https://www.youtube.com/channel/UCQs6B7W6qQEjFtTNI7jvG2g" class="social-icon-link bi-youtube">
+                                            </a>
+                                        </li>
+
+                                        <li class="social-icon-item">
+                                            <a href="#" class="social-icon-link bi-whatsapp">
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="col-lg-5 col-12 contact-block-wrap mt-5 mt-lg-0 pt-4 pt-lg-0 mx-auto">
+                                    <div class="contact-block">
+                                        <h6 class="mb-0">
+                                            <i class="custom-icon bi-shop me-3"></i>
+
+                                            <strong>Standing & growing together</strong>
+
+                                            <span class="ms-auto">Yaris Bapao Club Indonesia</span>
+                                        </h6>
+                                    </div>
+                                </div>
+
+                                
+
+                            </div>
+               
+
+                    </div>
+                </section>
+
+                <footer class="site-footer">
+                    <div class="container">
+                        <div class="row">
+
+                            <div class="col-lg-12 col-12">
+                                <h4 class="site-footer-title mb-4">Address</h4>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 col-11">
+                                <div class="site-footer-thumb">
+                                    <strong class="mb-1">Sekretariat</strong>
+
+                                    <p>Perumahan Triraksa Village Blok A8 No.36 Tiga Raksa Kab. Tangerang Prov. Banten</p>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 col-11">
+                                <div class="site-footer-thumb">
+                                    <strong class="mb-1">-</strong>
+
+                                    <p> </p>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 col-11">
+                                <strong class="mb-1">-</strong>
+
+                                <p> </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="site-footer-bottom">
+                        <div class="container">
+                            <div class="row align-items-center">
+
+                                <div class="col-lg-8 col-12 mt-4">
+                                    <p class="copyright-text mb-0">Copyright © 2025 YBCI 
+                                    - Design: <a href="https://bawahtangga.web.id/" rel="nofollow" target="_blank">Bawah Tangga Production</a></p>
+                                </div>
+
+                                <div class="col-lg-2 col-md-3 col-3 mt-lg-4 ms-auto">
+                                    <a href="#section_1" class="back-top-icon smoothscroll" title="Back Top">
+                                        <i class="bi-arrow-up-circle"></i>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+
+        <!-- JAVASCRIPT FILES -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/click-scroll.js"></script>
+        <script src="js/custom.js"></script>
+
+    </body>
+</html>

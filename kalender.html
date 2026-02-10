@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Kalender Kegiatan YBCI</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/ybci2.png">
+
+<style>
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 15px;
+    background: linear-gradient(to bottom, #000000, #ffffff);
+    background-attachment: fixed;
+    background-size: cover;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.back-button {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    z-index: 1000;
+    transition: background 0.3s;
+}
+
+.back-button:hover {
+    background: #0056b3;
+}
+
+.calendar-container, .event-list {
+    width: 100%;
+    max-width: 600px; /* batas maksimal lebar di desktop */
+    margin: 0 auto 20px auto;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    color: #333;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.header button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 7px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+.header button:hover {
+    background: #0056b3;
+}
+
+#month-year {
+    font-size: 20px;
+    font-weight: bold;
+    color: #444;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    padding: 10px 0;
+    color: #555;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+td {
+    width: 14.28%;
+    height: 60px;
+    text-align: center;
+    vertical-align: middle;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+td:hover {
+    transform: translateY(-3px);
+}
+
+.event-day {
+    border-radius: 50%;
+    display: inline-block;
+    width: 38px;
+    height: 38px;
+    line-height: 38px;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.event-day:hover {
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transform: scale(1.1);
+}
+
+.event-list h3 {
+    margin-top: 0;
+}
+
+.event-item {
+    padding: 12px 15px;
+    margin-bottom: 12px;
+    border-radius: 12px;
+    font-weight: 500;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+
+.event-item:hover {
+    transform: translateY(-2px);
+}
+
+.event-item.rapat { background: #ffecec; border-left: 6px solid red; }
+.event-item.sosial { background: #e0f0ff; border-left: 6px solid blue; }
+.event-item.lainnya { background: #e8ffe8; border-left: 6px solid green; }
+
+.legend {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin: 5px 10px;
+    font-weight: 500;
+    color: #fff;
+    font-size: 14px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.legend-color {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin-right: 6px;
+}
+
+/* Responsif */
+@media (max-width: 480px) {
+    .header button { padding: 5px 10px; font-size: 14px; }
+    #month-year { font-size: 18px; }
+    th, td { font-size: 12px; padding: 6px 0; }
+    .event-day { width: 32px; height: 32px; line-height: 32px; font-size: 12px; }
+    .event-list { padding: 12px; }
+    .event-item { padding: 10px 12px; font-size: 14px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Tombol Kembali -->
+<button class="back-button" onclick="history.back()">Kembali</button>
+
+<h1>Kalender Kegiatan YBCI</h1>
+
+<div class="legend">
+    <div class="legend-item"><div class="legend-color" style="background:red;"></div> Rapat</div>
+    <div class="legend-item"><div class="legend-color" style="background:blue;"></div> Sosial</div>
+    <div class="legend-item"><div class="legend-color" style="background:green;"></div> Lainnya</div>
+</div>
+
+<div class="calendar-container">
+    <div class="header">
+        <button onclick="prevMonth()">◀</button>
+        <h2 id="month-year"></h2>
+        <button onclick="nextMonth()">▶</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Min</th><th>Sen</th><th>Sel</th><th>Rab</th>
+                <th>Kam</th><th>Jum</th><th>Sab</th>
+            </tr>
+        </thead>
+        <tbody id="calendar-body"></tbody>
+    </table>
+</div>
+
+<div class="event-list">
+    <h3>Kegiatan <span id="selected-date">—</span></h3>
+    <div id="event-details"></div>
+</div>
+
+<script>
+const API_URL = "https://script.google.com/macros/s/AKfycbzn-lUohr4MWGESmUeEJqQoKeZWLuqJjG3ukdaBrTPsTiG5Y_f40O4ZqwYNw98j9Tlz/exec";
+let eventData = {};
+let eventCategory = {};
+let current = new Date();
+
+function formatDate(dateStr) {
+    const d = new Date(dateStr);
+    const yyyy = d.getFullYear();
+    const mm = String(d.getMonth()+1).padStart(2,'0');
+    const dd = String(d.getDate()).padStart(2,'0');
+    return `${yyyy}-${mm}-${dd}`;
+}
+
+async function fetchEvents() {
+    try {
+        const res = await fetch(API_URL);
+        const data = await res.json();
+        eventData = {};
+        eventCategory = {};
+        data.forEach(ev => {
+            const dateKey = formatDate(ev.date);
+            if (!eventData[dateKey]) eventData[dateKey] = [];
+            eventData[dateKey].push(ev.title);
+
+            if (!eventCategory[dateKey]) eventCategory[dateKey] = [];
+            eventCategory[dateKey].push(ev.category);
+        });
+        loadCalendar();
+    } catch (err) {
+        alert("Gagal memuat data dari Google Sheets! " + err);
+        console.error(err);
+    }
+}
+
+function getCategoryColor(category) {
+    switch(category) {
+        case "rapat": return "red";
+        case "sosial": return "blue";
+        default: return "green";
+    }
+}
+
+function loadCalendar() {
+    const year = current.getFullYear();
+    const month = current.getMonth();
+    document.getElementById("month-year").textContent =
+        current.toLocaleString("id-ID", { month: "long", year: "numeric" });
+
+    const first = new Date(year, month, 1).getDay();
+    const days = new Date(year, month + 1, 0).getDate();
+
+    const body = document.getElementById("calendar-body");
+    body.innerHTML = "";
+    let row = document.createElement("tr");
+
+    for (let i = 0; i < first; i++) row.appendChild(document.createElement("td"));
+
+    for (let d = 1; d <= days; d++) {
+        let dateStr = `${year}-${String(month+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+        let cell = document.createElement("td");
+
+        let dayDiv = document.createElement("div");
+        dayDiv.textContent = d;
+
+        if (eventData[dateStr]) {
+            const colors = eventCategory[dateStr].map(getCategoryColor);
+            if (colors.length === 1) {
+                dayDiv.className = "event-day";
+                dayDiv.style.background = colors[0];
+            } else {
+                dayDiv.className = "event-day";
+                let angleStep = 360 / colors.length;
+                let gradient = "conic-gradient(";
+                colors.forEach((c,i) => {
+                    gradient += `${c} ${i*angleStep}deg ${(i+1)*angleStep}deg, `;
+                });
+                gradient = gradient.slice(0,-2) + ")";
+                dayDiv.style.background = gradient;
+            }
+        } else {
+            dayDiv.style.color = "#555";
+        }
+
+        cell.appendChild(dayDiv);
+        cell.onclick = () => showEvents(dateStr);
+        row.appendChild(cell);
+
+        if ((first + d) % 7 === 0) {
+            body.appendChild(row);
+            row = document.createElement("tr");
+        }
+    }
+    body.appendChild(row);
+}
+
+function prevMonth() { current.setMonth(current.getMonth()-1); loadCalendar(); }
+function nextMonth() { current.setMonth(current.getMonth()+1); loadCalendar(); }
+
+function showEvents(dateStr) {
+    document.getElementById("selected-date").textContent = dateStr;
+    const box = document.getElementById("event-details");
+    box.innerHTML = "";
+
+    if (!eventData[dateStr]) {
+        box.innerHTML = "<i>Tidak ada kegiatan.</i>";
+        return;
+    }
+
+    eventData[dateStr].forEach((ev, i) => {
+        const item = document.createElement("div");
+        const cat = eventCategory[dateStr][i];
+        item.className = `event-item ${cat || "lainnya"}`;
+        item.textContent = ev;
+        box.appendChild(item);
+    });
+}
+
+fetchEvents();
+</script>
+
+</body>
+</html>

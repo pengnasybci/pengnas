@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Berita YBCI</title>
+    
+    <!-- favicon -->
+    <link rel=icon href="redaksi/img/favicon.png" sizes="20x20" type="image/png">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="assets/css/vendor.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+
+    <!-- === OVERRIDE WARNA BIRU → ORANYE & HITAM + WARNA DASAR PUTIH === -->s
+    <style>
+
+        /* ------------------------- */
+        /*     UBAH WARNA DASAR     */
+        /* ------------------------- */
+
+        body,
+        .bg-black,
+        .navbar-area,
+        .banner-area,
+        .adbar-area.bg-black,
+        .footer-bottom,
+        .single-post-wrap.style-white {
+            background: #ffffff !important;
+        }
+
+        /* Perbaiki warna teks agar tidak tetap putih */
+        body,
+        p,
+        h1, h2, h3, h4, h5, h6,
+        .navbar-nav li a,
+        .banner-details h2,
+        .details .title a,
+        .post-meta-single ul li,
+        .footer-bottom p,
+        .footer-bottom a {
+            color: #000 !important;
+        }
+
+        /* Card style-white butuh border agar tidak “ngambang” */
+        .single-post-wrap.style-white {
+            border: 1px solid #e0e0e0 !important;
+            border-radius: 6px;
+        }
+
+        /* tombol dan tag oranye */
+        .tag-blue {
+            background: #ff6600 !important;
+            color: #000 !important;
+        }
+
+        .tag-blue:hover {
+            background: #cc5200 !important;
+            color: #fff !important;
+        }
+
+        .btn-blue {
+            background: #ff6600 !important;
+            border-color: #ff6600 !important;
+            color: #000 !important;
+        }
+
+        .btn-blue:hover {
+            background: #cc5200 !important;
+            border-color: #cc5200 !important;
+            color: #fff !important;
+        }
+
+        /* jika elemen memakai overlay hitam */
+        .body-overlay {
+            background: rgba(0,0,0,0.4) !important;
+        }
+
+        <style>
+/* =============================== */
+/*   PEMISAH BERITA TIPS & TRIK    */
+/* =============================== */
+.section-divider {
+    margin: 60px 0 30px;
+    text-align: center;
+    position: relative;
+}
+
+.section-divider::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #e0e0e0;
+    z-index: 1;
+}
+
+.section-divider span {
+    background: #ffffff;
+    padding: 10px 25px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #ff6600;
+    position: relative;
+    z-index: 2;
+    border: 2px solid #ff6600;
+    border-radius: 30px;
+}
+
+/* tag khusus tips & trik */
+.tag-tips {
+    background: #000 !important;
+    color: #fff !important;
+    font-size: 12px;
+}
+
+.tag-tips:hover {
+    background: #ff6600 !important;
+    color: #000 !important;
+}
+</style>
+
+
+    </style>
+    <!-- ============================================ -->
+
+</head>
+<body>
+
+    <!-- preloader area start -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div class="spinner">
+                <div class="dot1"></div>
+                <div class="dot2"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- search popup start-->
+    <div class="td-search-popup" id="td-search-popup">
+        <form action="index.html" class="search-form">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search.....">
+            </div>
+            <button type="submit" class="submit-btn"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+    <!-- search popup end-->
+
+    <div class="body-overlay" id="body-overlay"></div>
+
+    <!-- header start -->
+    <div class="navbar-area">
+        
+        <div class="adbar-area bg-black d-none d-lg-block">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-5 align-self-center">
+                        <div class="logo text-md-left text-center">
+                            <a class="main-logo" href="index.html"><img src="assets/img/logonews.png" alt="img"></a>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-7 text-md-right text-center">
+                        <a href="#" class="adbar-right">
+                            <img src="assets/img/add/1.png" alt="YBCI">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- navbar start -->
+        <nav class="navbar navbar-expand-lg">
+            <div class="container nav-container">
+                <div class="responsive-mobile-menu">
+                    <div class="logo d-lg-none d-block">
+                        <a class="main-logo" href="index.html"><img src="assets/img/logonews.png" alt="img"></a>
+                    </div>
+                    <button class="menu toggle-btn d-block d-lg-none" data-target="#nextpage_main_menu" 
+                    aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="icon-left"></span>
+                        <span class="icon-right"></span>
+                    </button>
+                </div>
+                <div class="nav-right-part nav-right-part-mobile">
+                    <a class="search header-search" href="#"><i class="fa fa-search"></i></a>
+                </div>
+                <div class="collapse navbar-collapse" id="nextpage_main_menu">
+                    <ul class="navbar-nav menu-open">
+                        <li class="current-menu-item">
+                            <a href="index.html">Home</a>
+                        </li>                        
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- navbar end -->
+
+    <!-- banner area start -->
+    <div class="banner-area banner-inner-1 bg-black" id="banner">
+        <div class="banner-inner pt-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="thumb after-left-top">
+                            <img src="assets/img/banner/utama.jpeg" alt="img">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 align-self-center">
+                        <div class="banner-details mt-4 mt-lg-0">
+                            <div class="post-meta-single">
+                                <ul>
+                                    <li><a class="tag-base tag-blue" href="#">Sosial</a></li>
+                                    <li class="date"><i class="fa fa-clock-o"></i>10.12.2025</li>
+                                </ul>
+                            </div>
+                            <h2>Yaris Bapao Club Indonesia Serahkan Bantuan Banjir Di Aceh Tamiang.</h2>
+                            <p>Banda Aceh – Kepedulian nyata ditunjukkan oleh Yaris Bapao Club Indonesia (YBCI) terhadap masyarakat terdampak bencana banjir. Pada Rabu, 10 Desember 2025, komunitas mobil ini menyalurkan bantuan bagi korban banjir di Aceh Tamiang, Provinsi Aceh, dengan pembagian di tiga titik berbeda agar seluruh warga terdampak menerima bantuan secara merata. </p>
+                            <a class="btn btn-blue" href="redaksi/Yaris Bapao Club Indonesia Serahkan Bantuan Banjir Di Aceh Tamiang.html">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- posts -->
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single-post-wrap style-white">
+                        <div class="thumb">
+                            <img src="assets/img/post/1.png" alt="img">
+                            <a class="tag-base tag-blue" href="#">Family Gathering</a>
+                        </div>
+                        <div class="details">
+                            <h6 class="title"><a href="#">Harmonisasi Keluarga Besar YBCI: Serunya Family Gathering Bertema Panganda-run</a></h6>
+                            <div class="post-meta-single mt-3">
+                                <ul><li><i class="fa fa-clock-o"></i>29.11.2025</li></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single-post-wrap style-white">
+                        <div class="thumb">
+                            <img src="assets/img/post/2.jpeg" alt="img">
+                            <a class="tag-base tag-orange" href="#">Pengnas</a>
+                        </div>
+                        <div class="details">
+                            <h6 class="title"><a href="#">YBCI Selenggarakan Rakernas 2025, Fokus pada Inovasi dan Transformasi Program</a></h6>
+                            <div class="post-meta-single mt-3">
+                                <ul><li><i class="fa fa-clock-o"></i>16.11.2025</li></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single-post-wrap style-white">
+                        <div class="thumb">
+                            <img src="assets/img/post/3.jpeg" alt="img">
+                            <a class="tag-base tag-blue" href="#">Anniversary</a>
+                        </div>
+                        <div class="details">
+                            <h6 class="title"><a href="#">YBCI Subang Anniversary ke-6, Momentum Memperkuat Komunitas dan Silaturahmi</a></h6>
+                            <div class="post-meta-single mt-3">
+                                <ul><li><i class="fa fa-clock-o"></i>11.10.2025</li></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single-post-wrap style-white">
+                        <div class="thumb">
+                            <img src="assets/img/post/4.jpeg" alt="img">
+                            <a class="tag-base tag-orange" href="#">Anniversary</a>
+                        </div>
+                        <div class="details">
+                            <h6 class="title"><a href="redaksi/Satu Tahun Kebersamaan: YBCI Chapter Aceh–Sumut Gelar Anniversary Perdana.html">Satu Tahun Kebersamaan: YBCI Chapter Aceh–Sumut Gelar Anniversary Perdana</a></h6>
+                            <div class="post-meta-single mt-3">
+                                <ul><li><i class="fa fa-clock-o"></i>08.06.2025</li></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+               <div class="col-lg-3 col-sm-6">
+    <div class="single-post-wrap style-white">
+        <div class="thumb">
+            <a href="YBCI Banten Raya Gelar Kopdar Bulanan di Talaga Bestari, Bahas Touring dan Camp Awal 2026.html">
+                <img src="assets/img/banner/banray.jpeg" alt="img">
+            </a>
+            <a class="tag-base tag-orange" href="redaksi/YBCI Banten Raya Gelar Kopdar Bulanan di Talaga Bestari, Bahas Touring dan Camp Awal 2026.html">
+                Kopdar
+            </a>
+        </div>
+        <div class="details">
+            <h6 class="title">
+                <a href="redaksi/YBCI Banten Raya Gelar Kopdar Bulanan di Talaga Bestari, Bahas Touring dan Camp Awal 2026.html">
+                    YBCI Banten Raya Gelar Kopdar Bulanan di Talaga Bestari, Bahas Touring dan Camp Awal 2026
+                </a>
+            </h6>
+            <div class="post-meta-single mt-3">
+                <ul>
+                    <li><i class="fa fa-clock-o"></i>15.06.2025</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+  <div class="col-lg-3 col-sm-6">
+    <div class="single-post-wrap style-white">
+        <div class="thumb">
+            <a href="redaksi/Rapat_Zoom_Pengnas_Yaris_Bapao_Club_Indonesia_Bahas_Program_Kerja_Baksos_Ramadhan_dan_Anniversary_Ciayumajakuning.html">
+                <img src="redaksi/img/banner/zoom.jpeg" alt="img">
+            </a>
+            <a class="tag-base tag-orange" href="redaksi/Rapat_Zoom_Pengnas_Yaris_Bapao_Club_Indonesia_Bahas_Program_Kerja_Baksos_Ramadhan_dan_Anniversary_Ciayumajakuning.html">
+                Pengnas
+            </a>
+        </div>
+        <div class="details">
+            <h6 class="title">
+                <a href="redaksi/Rapat_Zoom_Pengnas_Yaris_Bapao_Club_Indonesia_Bahas_Program_Kerja_Baksos_Ramadhan_dan_Anniversary_Ciayumajakuning.html">
+                    Rapat Zoom Pengnas Yaris Bapao Club Indonesia Bahas Program Kerja Baksos Ramadhan
+                </a>
+            </h6>
+            <div class="post-meta-single mt-3">
+                <ul>
+                    <li><i class="fa fa-clock-o"></i>28.01.2026</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-3 col-sm-6">
+    <div class="single-post-wrap style-white">
+        <div class="thumb">
+            <a href="redaksi/KOPDARGAB_YBCI_YOGYAKARTA_MAGELANG.html">
+                <img src="redaksi/img/banner/magelang.jpeg" alt="img">
+            </a>
+            <a class="tag-base tag-orange" href="redaksi/KOPDARGAB_YBCI_YOGYAKARTA_MAGELANG.html">
+                Pengnas
+            </a>
+        </div>
+        <div class="details">
+            <h6 class="title">
+                <a href="redaksi/KOPDARGAB_YBCI_YOGYAKARTA_MAGELANG.html">
+                    KOPDARGAB YBCI YOGYAKARTA - MAGELANG
+                </a>
+            </h6>
+            <div class="post-meta-single mt-3">
+                <ul>
+                    <li><i class="fa fa-clock-o"></i>07.02.2026</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>  
+    </div>
+    <!-- banner area end -->
+
+<!-- =============================== -->
+<!--   SECTION TIPS & TRIK           -->
+<!-- =============================== -->
+<div class="container">
+    <div class="section-divider">
+        <span>Tips & Trik Otomotif</span>
+    </div>
+
+    <div class="row">
+
+        <div class="col-lg-3 col-sm-6">
+            <div class="single-post-wrap style-white">
+                <div class="thumb">
+                    <img src="redaksi/img/banner/2000.jpeg" alt="Tips Perawatan">
+                    <a class="tag-base tag-tips" href="redaksi/YBC_ Bersama_Auto2000_Gatsu_Medan_Bagikan_Tips_Perawatan_Toyota_Yaris_Bapao_Agar_Tetap_Prima.html">Tips & Trik</a>
+                </div>
+                <div class="details">
+                    <h6 class="title">
+                        <a href="redaksi/YBC_ Bersama_Auto2000_Gatsu_Medan_Bagikan_Tips_Perawatan_Toyota_Yaris_Bapao_Agar_Tetap_Prima.html">
+                            YBCI Bersama Auto2000 Gatsu Medan Bagikan Tips Perawatan Toyota Yaris Bapao Agar Tetap Prima
+                        </a>
+                    </h6>
+                    <div class="post-meta-single mt-3">
+                        <ul>
+                            <li><i class="fa fa-clock-o"></i>29.12.2025</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       
+    </div>
+</div>
+<!-- =============================== -->
+
+
+    <div class="footer-bottom text-center">
+        <ul class="widget_nav_menu">
+            <li><a href="#">About</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <p>Copyright ©2025 YBCI - Design <a href="https://siplohsoftware.xyz/">Want.it</a></p>
+    </div>
+
+    <!-- back to top area start -->
+    <div class="back-to-top">
+        <span class="back-top"><i class="fa fa-angle-up"></i></span>
+    </div>
+    <!-- back to top area end -->
+
+    <!-- all plugins here -->
+    <script src="assets/js/vendor.js"></script>
+    <!-- main js  -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
