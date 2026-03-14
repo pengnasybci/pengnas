@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BukbeRun YBCI Aceh–Sumut Pererat Silaturahmi Antar Member</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="icon" href="img/favicon.png" sizes="20x20" type="image/png">
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #f0f2f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* --- IKLAN SAMPING DESKTOP --- */
+        .ads-left, .ads-right {
+            position: fixed;
+            top: 100px;
+            width: 12%;
+            max-width: 220px;
+            height: 65vh;
+            max-height: 700px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            overflow: hidden;
+            z-index: 999;
+        }
+
+        .ads-left { left: 10px; }
+        .ads-right { right: 10px; }
+
+        /* KONTEN IKLAN KIRI */
+        .ads-content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .ads-content img,
+        .ads-right img {
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .ads-content img {
+            flex: 1;
+        }
+
+        /* TOMBOL LINK IKLAN */
+        .ads-button {
+            margin: 10px;
+            padding: 10px 5px;
+            background: #007bff;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .ads-button:hover {
+            background: #0056b3;
+        }
+
+        @media (max-width: 1024px) {
+            .ads-left, .ads-right {
+                display: none;
+            }
+        }
+
+        /* --- NAVBAR --- */
+        nav {
+            background-color: #007bff;
+            padding: 15px 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+
+        nav a:hover {
+            color: #ffdd57;
+        }
+
+        /* --- ARTIKEL --- */
+        .container {
+            padding: 70px 20px;
+        }
+
+        .artikel-card {
+            background-color: #fff;
+            max-width: 800px;
+            margin: 60px auto;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            position: relative;
+        }
+
+        .logo-overlay {
+            position: absolute;
+            top: -55px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+        }
+
+        .main-image {
+            width: 100%;
+            display: block;
+        }
+
+        .artikel-content {
+            padding: 25px;
+        }
+
+        .artikel-content h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-align: center; /* Judul biasanya lebih bagus di tengah atau kiri */
+        }
+
+        .artikel-content p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            white-space: pre-line;
+            text-align: justify; /* MEMBUAT RATA KIRI KANAN */
+            hyphens: auto;       /* MEMBANTU PEMOTONGAN KATA AGAR LEBIH RAPI */
+        }
+
+        /* --- POPUP MOBILE --- */
+        .mobile-popup {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 0;
+            transition: 0.4s;
+        }
+
+        .mobile-popup.show { opacity: 1; }
+
+        .popup-box {
+            width: 85%;
+            max-width: 350px;
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .popup-box img {
+            width: 100%;
+        }
+
+        .close-popup {
+            position: absolute;
+            top: 8px;
+            right: 10px;
+            font-size: 24px;
+            cursor: pointer;
+            background: #fff;
+            border-radius: 50%;
+            padding: 3px 8px;
+            color: red;
+        }
+
+        @media (max-width: 1024px) {
+            .mobile-popup {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="ads-left">
+    <div class="ads-content">
+        <img src="img/iklan/kiri.jpeg" alt="Iklan Kiri">
+        <a href="https://siplohsoftware.xyz" target="_blank" class="ads-button">
+            🔗 Want It
+        </a>
+    </div>
+</div>
+
+<div class="ads-right">
+    <img src="img/iklan/kanan.jpeg" alt="Iklan Kanan">
+</div>
+
+<nav>
+    <a href="Berita.html">⬅ Back</a>
+</nav>
+
+<div class="container">
+    <div class="artikel-card">
+
+        <img src="img/logonews.png" class="logo-overlay" alt="Logo">
+
+        <img src="img/banner/bukber.jpeg" class="main-image" alt="Banner">
+
+        <div class="artikel-content">
+            <h1>BukbeRun YBCI Aceh–Sumut Pererat Silaturahmi Antar Member</h1>
+            <p>
+Medan – Dalam suasana penuh kebersamaan di bulan suci Ramadan, komunitas  Yaris Bapao Club Indonesia (YBCI) Chapter Aceh dan Sumatera Utara menggelar kegiatan buka puasa bersama (Bukber) di Kota Medan. Kegiatan ini menjadi momen istimewa bagi para member untuk berkumpul, mempererat silaturahmi, serta memperkuat rasa kekeluargaan di dalam komunitas.
+
+Acara bukber ini dihadiri oleh member YBCI dari berbagai daerah, baik dari Aceh maupun Sumatera Utara. Beberapa anggota bahkan rela menempuh perjalanan cukup jauh demi bisa hadir dan bertemu langsung dengan sesama member. Kehadiran para anggota bersama keluarga menambah hangat suasana kebersamaan dalam kegiatan tersebut.
+
+Kegiatan diawali dengan sesi kumpul santai antar member, di mana para peserta saling berbincang, berbagi pengalaman, serta memperkenalkan member baru yang bergabung dalam komunitas. Momen ini dimanfaatkan untuk mempererat hubungan antar anggota yang selama ini lebih sering berinteraksi melalui media sosial atau grup komunikasi komunitas.
+
+Menjelang waktu berbuka puasa, seluruh peserta bersama-sama menikmati hidangan yang telah disiapkan oleh panitia. Suasana penuh keakraban terasa saat para member duduk bersama, berbagi cerita, dan menikmati kebersamaan dalam satu meja. Setelah berbuka puasa, kegiatan dilanjutkan dengan sesi ramah tamah serta diskusi ringan mengenai agenda kegiatan komunitas yang akan datang.
+
+Dalam kesempatan tersebut, perwakilan komunitas menyampaikan bahwa kegiatan bukber ini merupakan salah satu agenda yang rutin dilaksanakan setiap bulan Ramadan. Selain sebagai bentuk ibadah dan kebersamaan di bulan yang penuh berkah, kegiatan ini juga menjadi sarana mempererat solidaritas antar member YBCI Aceh–Sumut.
+
+“Kami berharap kegiatan seperti ini dapat terus mempererat hubungan kekeluargaan di antara member. Komunitas ini bukan hanya sekadar tempat berkumpul bagi pecinta otomotif, tetapi juga menjadi wadah persaudaraan yang saling mendukung satu sama lain,” ungkap salah satu perwakilan member yang hadir.
+
+Antusiasme para peserta terlihat dari tingginya partisipasi dalam kegiatan tersebut. Banyak member yang berharap kegiatan serupa dapat terus dilaksanakan di masa mendatang dengan skala yang lebih besar dan melibatkan lebih banyak anggota.
+
+Dengan terselenggaranya kegiatan buka puasa bersama ini, diharapkan hubungan antar member YBCI Aceh dan Sumatera Utara semakin solid serta mampu menjaga kekompakan komunitas dalam berbagai kegiatan, baik di bidang otomotif maupun kegiatan sosial yang bermanfaat bagi masyarakat.
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="mobile-popup" id="popupIklan">
+    <div class="popup-box">
+        <span class="close-popup" onclick="closePopup()">&times;</span>
+        <img src="img/iklan/popup.jpeg" alt="Iklan Popup">
+    </div>
+</div>
+
+<script>
+    function closePopup() {
+        const popup = document.getElementById("popupIklan");
+        popup.style.display = "none";
+    }
+
+    window.addEventListener("load", () => {
+        if (window.innerWidth <= 1024) {
+            const popup = document.getElementById("popupIklan");
+            popup.style.display = "flex";
+            setTimeout(() => popup.classList.add("show"), 20);
+        }
+    });
+</script>
+
+</body>
+</html>

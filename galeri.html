@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeri Foto dengan Pencarian</title>
+    <style>
+        :root {
+            --bg: #121212;
+            --card-bg: #1e1e1e;
+            --accent: #3498db;
+            --text: #ffffff;
+        }
+
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 20px; }
+        
+        /* Header & Search Bar */
+        header { position: sticky; top: 0; background: var(--bg); padding: 10px 0 20px 0; z-index: 50; }
+        h1 { font-weight: 300; margin-bottom: 20px; }
+        
+        .search-container { max-width: 500px; margin: 0 auto; position: relative; }
+        #searchInput {
+            width: 100%;
+            padding: 12px 20px;
+            border-radius: 25px;
+            border: 1px solid #444;
+            background: #222;
+            color: white;
+            font-size: 16px;
+            outline: none;
+            transition: 0.3s;
+            box-sizing: border-box;
+        }
+        #searchInput:focus { border-color: var(--accent); box-shadow: 0 0 8px rgba(52, 152, 219, 0.4); }
+
+        /* Gallery Grid */
+        .gallery { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); 
+            gap: 15px; 
+            max-width: 1100px; 
+            margin: 20px auto; 
+        }
+        
+        .card { 
+            background: var(--card-bg); 
+            border-radius: 12px; 
+            overflow: hidden; 
+            transition: 0.3s; 
+            cursor: pointer; 
+            border: 1px solid #333;
+            animation: fadeIn 0.5s ease;
+        }
+        .card:hover { transform: translateY(-5px); border-color: var(--accent); }
+        
+        img { width: 100%; height: 160px; object-fit: cover; display: block; background: #000; }
+        .card p { font-size: 12px; padding: 10px; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+        /* Modal Lightbox */
+        #modal { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.9); justify-content:center; align-items:center; z-index:1000; cursor: zoom-out; }
+        #modal img { max-width: 90%; max-height: 90%; object-fit: contain; }
+
+        #loader { padding: 50px; color: #888; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>YBCI Gallery</h1>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Cari nama foto..." onkeyup="filterPhotos()">
+        </div>
+    </header>
+
+    <div id="loader">Menghubungkan ke Drive...</div>
+    <div id="gallery" class="gallery"></div>
+
+    <div id="modal" onclick="this.style.display='none'">
+        <img id="fullImg">
+    </div>
+
+    <script>
+        const URL_API = "https://script.google.com/macros/s/AKfycbxvOux9xbLIDzDAhqXhHXFqBrQ3ZEBWfi1ymVWc2JpNIMlzobwYkR-m6tM1UDHlyVXPzA/exec";
+        let allPhotos = []; // Tempat menyimpan data asli untuk pencarian
+
+        async function fetchPhotos() {
+            try {
+                const response = await fetch(URL_API);
+                allPhotos = await response.json();
+                
+                if (allPhotos.error) {
+                    document.getElementById('loader').innerText = "Error: " + allPhotos.error;
+                    return;
+                }
+
+                document.getElementById('loader').style.display = 'none';
+                displayPhotos(allPhotos);
+            } catch (error) {
+                document.getElementById('loader').innerText = "Gagal memuat data.";
+                console.error(error);
+            }
+        }
+
+        function displayPhotos(photos) {
+            const gallery = document.getElementById('gallery');
+            gallery.innerHTML = ''; // Bersihkan galeri
+
+            if (photos.length === 0) {
+                gallery.innerHTML = '<p style="grid-column: 1/-1; color: #888;">Foto tidak ditemukan.</p>';
+                return;
+            }
+
+            photos.forEach(photo => {
+                const photoUrl = `https://lh3.googleusercontent.com/u/0/d/${photo.id}=s1000`;
+                
+                const div = document.createElement('div');
+                div.className = 'card';
+                div.onclick = () => {
+                    document.getElementById('modal').style.display = 'flex';
+                    document.getElementById('fullImg').src = photoUrl;
+                };
+                div.innerHTML = `<img src="${photoUrl}" loading="lazy"><p>${photo.name}</p>`;
+                gallery.appendChild(div);
+            });
+        }
+
+        // Fungsi Pencarian
+        function filterPhotos() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = allPhotos.filter(photo => 
+                photo.name.toLowerCase().includes(searchTerm)
+            );
+            displayPhotos(filtered);
+        }
+
+        fetchPhotos();
+    </script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yaris Bapao Club Indonesia</title>
+
+  <!-- Icon Logo -->
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <link rel="shortcut icon" type="image/png" href="images/ybci2.png">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+
+      /* Background gambar */
+      background: url("images/ybci.jpg") no-repeat center center fixed;
+      background-size: cover;
+
+      color: #fff; /* Teks default putih */
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.7); /* agar tulisan lebih jelas */
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+    }
+    .gallery a {
+      display: block;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.6);
+      transition: transform 0.3s ease;
+    }
+    .gallery a:hover {
+      transform: scale(1.05);
+    }
+    .gallery img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Tulisan berjalan di bawah halaman */
+    .running-text {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      font-size: 50px;       /* lebih besar */
+      font-weight: bold;
+      color: #ff0000;        /* merah */
+      background: rgba(0,0,0,0.7); /* transparan biar tidak nutupi full */
+      padding: 10px 0;
+      z-index: 999;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>All Chapter YBCI</h1>
+
+  <div class="gallery">
+    <a href="chapter/aceh.html"><img src="images/aceh.jpg" alt="Foto 1"></a>
+    <a href="chapter/bandung.html"><img src="images/bandung.jpg" alt="Foto 2"></a>
+    <a href="chapter/banray.html"><img src="images/banten.jpg" alt="Foto 3"></a>
+    <a href="chapter/barlingmascap.html"><img src="images/barlinfmascap.jpg" alt="Foto 4"></a>
+    <a href="chapter/bekasi.html"><img src="images/bekasi.jpg" alt="Foto 5"></a>
+    <a href="chapter/bogor.html"><img src="images/bogor.jpg" alt="Foto 6"></a>
+    <a href="index.html"><img src="images/karawang.jpg" alt="Foto 7"></a>
+    <a href="chapter/priatim.html"><img src="images/priatim.jpg" alt="Foto 8"></a>
+    <a href="index.html"><img src="images/purwakarta.jpg" alt="Foto 9"></a>
+    <a href="chapter/semarang.html"><img src="images/semarang raya.jpg" alt="Foto 10"></a>
+    <a href="chapter/sriwijaya.html"><img src="images/sriwijaya.jpg" alt="Foto 11"></a>
+    <a href="index.html"><img src="images/subang.jpg" alt="Foto 12"></a>
+    <a href="chapter/suci.html"><img src="images/suci.jpg" alt="Foto 13"></a>
+    <a href="chapter/ciayumajakung.html"><img src="images/ciayumajakuning.jpeg" alt="Foto 14"></a>
+    <a href="index.html"><img src="images/ybci.jpg" alt="Foto 15"></a>
+  </div>
+
+  <!-- Tulisan berjalan fixed di bawah -->
+  <marquee class="running-text" behavior="scroll" direction="left">
+    We Are Not a Club But We Are Family
+  </marquee>
+
+</body>
+</html>

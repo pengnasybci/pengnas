@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informasi YBCI</title>
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: #1a1a1a; /* Hitam Gelap */
+            margin: 0; 
+            padding: 20px; 
+            color: #ffffff; 
+        }
+        .container { max-width: 650px; margin: auto; }
+        header { text-align: center; margin-bottom: 30px; }
+        header h1 { color: #ff0000; text-transform: uppercase; letter-spacing: 2px; }
+        header p { color: #bbb; }
+
+        .card { 
+            background: #ffffff; /* Putih */
+            padding: 25px; 
+            margin-bottom: 20px; 
+            border-radius: 8px; /* Sudut lebih tajam untuk kesan formal */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border-top: 6px solid #ff0000; /* Aksen Merah */
+            animation: fadeIn 0.5s ease forwards;
+            color: #1a1a1a; /* Teks dalam card jadi hitam */
+        }
+
+        h2 { 
+            margin: 0 0 12px 0; 
+            color: #ff0000; /* Judul Merah */
+            font-size: 1.4rem; 
+            font-weight: 800;
+        }
+
+        p { margin: 0; line-height: 1.6; color: #333; }
+
+        @keyframes fadeIn { 
+            from { opacity: 0; transform: translateY(15px); } 
+            to { opacity: 1; transform: translateY(0); } 
+        }
+
+        .loading { 
+            text-align: center; 
+            color: #ff0000; 
+            padding: 50px; 
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        /* Gaya pesan error */
+        .error-card {
+            border-top-color: #555;
+            background: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Pusat Informasi</h1>
+        <p>Yaris Bapao Club Indonesia</p>
+    </header>
+
+    <div id="display-data">
+        <div class="loading">MENYINGKRONKAN DATA...</div>
+    </div>
+</div>
+
+<script>
+    const url = 'https://script.google.com/macros/s/AKfycbwqN1Q9lEW_MpApElYwlhsjAP6EaPJDGhXfFN872vVBlrHdUFAmmv9AbAwu6kzi-WOM/exec';
+
+    async function loadData() {
+        const container = document.getElementById('display-data');
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+
+            if (data.length === 0) {
+                container.innerHTML = '<div class="card"><p>Tidak ada data ditemukan.</p></div>';
+                return;
+            }
+
+            container.innerHTML = '';
+            data.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <h2>${item.judul || 'PEMBERITAHUAN'}</h2>
+                    <p>${item.isi || '-'}</p>
+                `;
+                container.appendChild(card);
+            });
+        } catch (e) {
+            container.innerHTML = '<div class="card error-card"><p>Sistem Gagal Memuat Data. Periksa koneksi.</p></div>';
+        }
+    }
+
+    loadData();
+    setInterval(loadData, 30000);
+</script>
+
+</body>
+</html>
