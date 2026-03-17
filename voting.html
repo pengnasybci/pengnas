@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Voting Chapter</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #000; color: #fff; }
+    .glass { background: rgba(24, 24, 27, 0.85); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.05); }
+    .card-kandidat { transition: transform 0.2s ease; cursor: pointer; }
+    .card-kandidat:active { transform: scale(0.98); }
+    .no-scroll { overflow: hidden; }
+    /* Menghilangkan seleksi biru saat klik di mobile */
+    * { -webkit-tap-highlight-color: transparent; }
+  </style>
+</head>
+<body class="antialiased min-h-screen">
+
+  <header class="sticky top-0 z-40 w-full glass py-5 px-6 border-b border-zinc-800">
+    <div class="max-w-md mx-auto flex justify-between items-center">
+      <h1 class="text-xl font-800 tracking-tighter uppercase">E-VOTE <span class="text-red-600">CHAPTER</span></h1>
+      <div id="statusIcon" class="h-2 w-2 rounded-full bg-zinc-600"></div>
+    </div>
+  </header>
+
+  <main class="max-w-md mx-auto px-6 py-8">
+    <div id="loginSection" class="space-y-6">
+      <div class="bg-zinc-900 border border-zinc-800 rounded-[2rem] p-8 shadow-2xl text-center">
+        <h2 class="text-2xl font-bold mb-2">Otentikasi Anggota</h2>
+        <p class="text-zinc-500 text-sm mb-8">Masukkan NRA untuk masuk ke panel pemilihan.</p>
+        
+        <input type="text" id="nraInput" 
+          class="w-full bg-black border border-zinc-700 rounded-2xl p-4 text-center text-lg font-bold tracking-widest focus:border-red-600 outline-none transition-all mb-4" 
+          placeholder="MASUKKAN NRA">
+          
+        <button onclick="handleLogin()" 
+          class="w-full bg-red-600 text-white font-bold py-4 rounded-2xl hover:bg-red-700 shadow-lg shadow-red-900/20 active:scale-95 transition-all">
+          MASUK PANEL PEMILIHAN
+        </button>
+      </div>
+    </div>
+
+    <div id="voteSection" class="hidden">
+      <div class="flex items-center gap-2 mb-8 text-zinc-500 uppercase text-[10px] font-bold tracking-widest">
+        <span class="w-8 h-[1px] bg-zinc-800"></span>
+        Daftar Calon Ketua Chapter
+      </div>
+      <div id="kandidatList" class="space-y-8"></div>
+    </div>
+  </main>
+
+  <div id="modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-6">
+    <div class="absolute inset-0 bg-black/90 backdrop-blur-md" onclick="closeModal()"></div>
+    <div class="relative bg-zinc-900 border border-zinc-800 w-full rounded-[2.5rem] p-8 text-center">
+      <p class="text-zinc-500 text-xs uppercase tracking-widest mb-2">Konfirmasi Pilihan Anda</p>
+      <h3 id="targetNama" class="text-red-600 text-3xl font-black uppercase mb-8"></h3>
+      <div class="flex flex-col gap-3">
+        <button onclick="executeVote()" class="w-full py-4 bg-white text-black font-black rounded-2xl">SAYA YAKIN, PILIH</button>
+        <button onclick="closeModal()" class="w-full py-4 text-zinc-500 font-bold">BATAL</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="loader" class="fixed inset-0 bg-black/80 z-[60] hidden flex flex-col items-center justify-center">
+    <div class="w-8 h-8 border-2 border-red-600 border-t-transparent rounded-full animate-spin mb-4"></div>
+    <p class="text-[10px] font-black tracking-widest uppercase text-white">Sinkronisasi Data...</p>
+  </div>
+
+  <script>
+    // MASUKKAN URL WEB APP ANDA DI SINI
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbz2K3ON1sy8poggCRvb4mrgHKis6nw_TY_CNUjUV-1B11LkK23CpfBQUl3IamvlgUrzBg/exec";
+
+    let currentNra = "";
+    let selectedKandidatNra = "";
+
+    function toggleLoader(show) {
+      document.getElementById('loader').classList.toggle('hidden', !show);
+    }
+
+    async function apiRequest(payload) {
+      const response = await fetch(WEB_APP_URL, {
+        method: 'POST',
+        body: JSON.stringify(payload)
+      });
+      return await response.json();
+    }
+
+    async function handleLogin() {
+      currentNra = document.getElementById('nraInput').value.trim();
+      if(!currentNra) return alert("NRA tidak boleh kosong!");
+      
+      toggleLoader(true);
+      try {
+        const res = await apiRequest({ action: 'checkVoter', nra: currentNra });
+        if(res.status === 'success') {
+          renderKandidat(res.data);
+        } else {
+          alert(res.message);
+        }
+      } catch (err) {
+        alert("Gagal terhubung ke server.");
+      } finally {
+        toggleLoader(false);
+      }
+    }
+
+    function renderKandidat(data) {
+      document.getElementById('loginSection').classList.add('hidden');
+      document.getElementById('voteSection').classList.remove('hidden');
+      document.getElementById('statusIcon').classList.replace('bg-zinc-600', 'bg-red-600');
+      
+      const list = document.getElementById('kandidatList');
+      list.innerHTML = data.map((k) => `
+        <div class="card-kandidat bg-zinc-900 border border-zinc-800 rounded-[2.5rem] p-6 shadow-xl" onclick="openModal('${k[0]}', '${k[1]}')">
+          <div class="w-full aspect-square bg-zinc-800 rounded-[2rem] mb-6 overflow-hidden border border-zinc-700">
+            <img src="${k[4]}" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" loading="lazy">
+          </div>
+          <div class="mb-6">
+            <h2 class="text-2xl font-black uppercase tracking-tighter">${k[0]}</h2>
+            <p class="text-zinc-500 font-mono text-[10px] uppercase italic">${k[1]}</p>
+          </div>
+          <div class="space-y-4">
+            <div class="p-4 bg-black/40 rounded-2xl border border-zinc-800">
+              <span class="text-[9px] font-black text-red-600 uppercase tracking-widest block mb-1">Visi Utama</span>
+              <p class="text-zinc-400 text-xs italic">"${k[2]}"</p>
+            </div>
+            <div class="p-4 bg-black/40 rounded-2xl border border-zinc-800">
+              <span class="text-[9px] font-black text-red-600 uppercase tracking-widest block mb-1">Misi</span>
+              <p class="text-zinc-400 text-xs leading-relaxed">${k[3]}</p>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function openModal(nama, nra) {
+      selectedKandidatNra = nra;
+      document.getElementById('targetNama').innerText = nama;
+      document.getElementById('modal').classList.remove('hidden');
+      document.body.classList.add('no-scroll');
+    }
+
+    function closeModal() {
+      document.getElementById('modal').classList.add('hidden');
+      document.body.classList.remove('no-scroll');
+    }
+
+    async function executeVote() {
+      closeModal();
+      toggleLoader(true);
+
+      try {
+        const res = await apiRequest({ 
+          action: 'submitVote', 
+          nraPemilih: currentNra, 
+          selectedKandidatNra: selectedKandidatNra 
+        });
+
+        if(res.status === 'success') {
+          alert(res.message);
+          document.getElementById('nraInput').value = "";
+          document.getElementById('voteSection').classList.add('hidden');
+          document.getElementById('loginSection').classList.remove('hidden');
+          document.getElementById('statusIcon').classList.replace('bg-red-600', 'bg-zinc-600');
+          window.scrollTo(0, 0);
+        } else {
+          alert(res.message);
+        }
+      } catch (err) {
+        alert("Gagal mengirim suara.");
+      } finally {
+        toggleLoader(false);
+      }
+    }
+  </script>
+</body>
+</html>

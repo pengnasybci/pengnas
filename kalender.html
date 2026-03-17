@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Kalender Kegiatan YBCI</title>
+
+    <link rel="icon" type="image/png" href="images/ybci2.png">
+
+<style>
+/* Reset Dasar */
+* { box-sizing: border-box; }
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 10px; /* Dikurangi agar lebih luas di HP */
+    background: linear-gradient(to bottom, #000000, #434343); /* Diperhalus agar tidak terlalu putih di bawah */
+    background-attachment: fixed;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+h1 {
+    text-align: center;
+    margin: 60px 0 10px 0; /* Memberi ruang untuk tombol kembali */
+    font-size: 22px; /* Ukuran font lebih pas untuk HP */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Tombol Kembali Lebih Mobile-Friendly */
+.back-button {
+    position: absolute;
+    top: 15px;
+    left: 15px; /* Pindah ke kiri biasanya lebih standar untuk navigasi */
+    background: #e74c3c; /* Warna merah agar kontras dengan tema hitam */
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* Container utama agar penuh di layar kecil */
+.calendar-container, .event-list {
+    width: 100%;
+    max-width: 500px; 
+    margin: 0 auto 15px auto;
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    color: #333;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.header button {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#month-year {
+    font-size: 18px;
+    font-weight: 800;
+    color: #222;
+    text-transform: capitalize;
+}
+
+table {
+    width: 100%;
+    table-layout: fixed; /* Menjaga ukuran kolom tetap sama */
+}
+
+th {
+    padding: 8px 0;
+    color: #e74c3c;
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+td {
+    height: 50px; /* Sedikit diperpendek untuk layar HP */
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.event-day {
+    border-radius: 50%;
+    display: inline-block;
+    width: 34px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    font-size: 13px;
+    transition: transform 0.2s;
+}
+
+/* List Kegiatan */
+.event-list h3 {
+    margin-top: 0;
+    font-size: 16px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 8px;
+    color: #e74c3c;
+}
+
+.event-item {
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    border-left: 5px solid transparent;
+}
+
+.event-item.rapat { background: #fff5f5; border-left-color: red; color: #b71c1c; }
+.event-item.sosial { background: #f0f7ff; border-left-color: blue; color: #0d47a1; }
+.event-item.lainnya { background: #f2fff2; border-left-color: green; color: #1b5e20; }
+
+/* Legend */
+.legend {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    background: rgba(0,0,0,0.4);
+    padding: 10px;
+    border-radius: 30px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.legend-color {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+/* Responsif Tambahan untuk layar sangat kecil */
+@media (max-width: 360px) {
+    .event-day { width: 30px; height: 30px; line-height: 30px; font-size: 11px; }
+    #month-year { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+<button class="back-button" onclick="history.back()">◀ KEMBALI</button>
+
+<h1>Kegiatan YBCI</h1>
+
+<div class="legend">
+    <div class="legend-item"><div class="legend-color" style="background:red;"></div> Rapat</div>
+    <div class="legend-item"><div class="legend-color" style="background:blue;"></div> Sosial</div>
+    <div class="legend-item"><div class="legend-color" style="background:green;"></div> Lainnya</div>
+</div>
+
+<div class="calendar-container">
+    <div class="header">
+        <button onclick="prevMonth()">◀</button>
+        <div id="month-year"></div>
+        <button onclick="nextMonth()">▶</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Min</th><th>Sen</th><th>Sel</th><th>Rab</th>
+                <th>Kam</th><th>Jum</th><th>Sab</th>
+            </tr>
+        </thead>
+        <tbody id="calendar-body"></tbody>
+    </table>
+</div>
+
+<div class="event-list">
+    <h3>Detail: <span id="selected-date">Pilih Tanggal</span></h3>
+    <div id="event-details"></div>
+</div>
+
+<script>
+const API_URL = "https://script.google.com/macros/s/AKfycbzn-lUohr4MWGESmUeEJqQoKeZWLuqJjG3ukdaBrTPsTiG5Y_f40O4ZqwYNw98j9Tlz/exec";
+let eventData = {};
+let eventCategory = {};
+let current = new Date();
+
+function formatDate(dateStr) {
+    const d = new Date(dateStr);
+    const yyyy = d.getFullYear();
+    const mm = String(d.getMonth()+1).padStart(2,'0');
+    const dd = String(d.getDate()).padStart(2,'0');
+    return `${yyyy}-${mm}-${dd}`;
+}
+
+async function fetchEvents() {
+    try {
+        const res = await fetch(API_URL);
+        const data = await res.json();
+        eventData = {};
+        eventCategory = {};
+        data.forEach(ev => {
+            const dateKey = formatDate(ev.date);
+            if (!eventData[dateKey]) eventData[dateKey] = [];
+            eventData[dateKey].push(ev.title);
+
+            if (!eventCategory[dateKey]) eventCategory[dateKey] = [];
+            eventCategory[dateKey].push(ev.category);
+        });
+        loadCalendar();
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+function getCategoryColor(category) {
+    switch(category) {
+        case "rapat": return "red";
+        case "sosial": return "blue";
+        default: return "green";
+    }
+}
+
+function loadCalendar() {
+    const year = current.getFullYear();
+    const month = current.getMonth();
+    document.getElementById("month-year").textContent =
+        current.toLocaleString("id-ID", { month: "long", year: "numeric" });
+
+    const first = new Date(year, month, 1).getDay();
+    const days = new Date(year, month + 1, 0).getDate();
+
+    const body = document.getElementById("calendar-body");
+    body.innerHTML = "";
+    let row = document.createElement("tr");
+
+    for (let i = 0; i < first; i++) row.appendChild(document.createElement("td"));
+
+    for (let d = 1; d <= days; d++) {
+        let dateStr = `${year}-${String(month+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+        let cell = document.createElement("td");
+        let dayDiv = document.createElement("div");
+        dayDiv.textContent = d;
+
+        if (eventData[dateStr]) {
+            const colors = eventCategory[dateStr].map(getCategoryColor);
+            dayDiv.className = "event-day";
+            if (colors.length === 1) {
+                dayDiv.style.background = colors[0];
+            } else {
+                let angleStep = 360 / colors.length;
+                let gradient = "conic-gradient(";
+                colors.forEach((c,i) => {
+                    gradient += `${c} ${i*angleStep}deg ${(i+1)*angleStep}deg, `;
+                });
+                gradient = gradient.slice(0,-2) + ")";
+                dayDiv.style.background = gradient;
+            }
+        } else {
+            dayDiv.style.color = "#888"; 
+            dayDiv.style.fontWeight = "normal";
+        }
+
+        cell.appendChild(dayDiv);
+        cell.onclick = () => showEvents(dateStr);
+        row.appendChild(cell);
+
+        if ((first + d) % 7 === 0) {
+            body.appendChild(row);
+            row = document.createElement("tr");
+        }
+    }
+    body.appendChild(row);
+}
+
+function prevMonth() { current.setMonth(current.getMonth()-1); loadCalendar(); }
+function nextMonth() { current.setMonth(current.getMonth()+1); loadCalendar(); }
+
+function showEvents(dateStr) {
+    // Format tanggal lebih enak dibaca
+    const options = { day: 'numeric', month: 'long', year: 'numeric' };
+    const formatted = new Date(dateStr).toLocaleDateString('id-ID', options);
+    
+    document.getElementById("selected-date").textContent = formatted;
+    const box = document.getElementById("event-details");
+    box.innerHTML = "";
+
+    if (!eventData[dateStr]) {
+        box.innerHTML = "<i style='color:#999'>Tidak ada jadwal kegiatan untuk tanggal ini.</i>";
+        return;
+    }
+
+    eventData[dateStr].forEach((ev, i) => {
+        const item = document.createElement("div");
+        const cat = eventCategory[dateStr][i];
+        item.className = `event-item ${cat || "lainnya"}`;
+        item.textContent = ev;
+        box.appendChild(item);
+    });
+}
+
+fetchEvents();
+</script>
+</body>
+</html>

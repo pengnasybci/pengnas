@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Member - Pengnas YBCI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #121212;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            width: 100%;
+            max-width: 400px;
+            background: #1e1e1e;
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            text-align: center;
+        }
+        .logo { width: 80px; margin-bottom: 15px; }
+        h2 { margin-bottom: 20px; font-weight: 600; color: #fff; }
+        
+        .form-group { margin-bottom: 12px; text-align: left; }
+        label { font-size: 12px; color: #aaa; margin-left: 5px; }
+        
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            margin-top: 5px;
+            border-radius: 12px;
+            border: 1px solid #333;
+            background: #2c2c2c;
+            color: #fff;
+            outline: none;
+            transition: 0.3s;
+        }
+        input:focus { border-color: #007bff; background: #333; }
+        
+        button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 20px;
+            border-radius: 12px;
+            border: none;
+            background: #007bff;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:active { transform: scale(0.98); }
+        
+        .toggle-link {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #bbb;
+        }
+        .toggle-link span { color: #007bff; cursor: pointer; font-weight: 500; }
+        .hidden { display: none; }
+        #message { margin-top: 15px; font-size: 14px; min-height: 20px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <img src="images/ybci2.png" alt="Logo" class="logo">
+    
+    <div id="loginForm">
+        <h2>Login Member</h2>
+        <div class="form-group">
+            <input type="text" id="loginNra" placeholder="NRA (Contoh: 001)" required>
+        </div>
+        <div class="form-group">
+            <input type="password" id="loginPass" placeholder="Password" required>
+        </div>
+        <button onclick="handleAuth('login')">Masuk</button>
+        <p class="toggle-link">Anggota baru? <span onclick="toggleForm()">Registrasi NRA</span></p>
+    </div>
+
+    <div id="regForm" class="hidden">
+        <h2>Registrasi NRA</h2>
+        <input type="text" id="regNama" placeholder="Nama Lengkap" required>
+        <input type="text" id="regNra" placeholder="NRA" required>
+        <input type="tel" id="regHp" placeholder="No. HP / WhatsApp" required>
+        <input type="text" id="regChapter" placeholder="Chapter (Contoh: Jakarta)" required>
+        <input type="password" id="regPass" placeholder="Buat Password" required>
+        <button onclick="handleAuth('register')">Daftar Sekarang</button>
+        <p class="toggle-link">Sudah terdaftar? <span onclick="toggleForm()">Login di sini</span></p>
+    </div>
+
+    <div id="message"></div>
+</div>
+
+<script>
+    // GANTI URL INI dengan URL hasil Deploy Google Apps Script Anda
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzDCIGhNdjcA2d_cDFkDsW52gtK68Qj5jWBXfrOiZeTr_o8CNwl_neujx79kx2tiOI_Zw/exec";
+
+    function toggleForm() {
+        document.getElementById('loginForm').classList.toggle('hidden');
+        document.getElementById('regForm').classList.toggle('hidden');
+        document.getElementById('message').innerText = "";
+    }
+
+    async function handleAuth(action) {
+        const msg = document.getElementById('message');
+        let payload = { action: action };
+
+        if (action === 'login') {
+            payload.nra = document.getElementById('loginNra').value;
+            payload.pass = document.getElementById('loginPass').value;
+            if(!payload.nra || !payload.pass) return alert("NRA & Password wajib diisi!");
+        } else {
+            payload.nama = document.getElementById('regNama').value;
+            payload.nra = document.getElementById('regNra').value;
+            payload.hp = document.getElementById('regHp').value;
+            payload.chapter = document.getElementById('regChapter').value;
+            payload.pass = document.getElementById('regPass').value;
+            if(!payload.nama || !payload.nra || !payload.pass) return alert("Mohon lengkapi data!");
+        }
+
+        msg.innerText = "Menghubungkan";
+        msg.style.color = "#aaa";
+
+        try {
+            // Gunakan Fetch dengan mode 'no-cors' atau 'cors' tergantung setup script
+            // Disini kita gunakan pendekatan POST standar
+            const response = await fetch(SCRIPT_URL, {
+                method: 'POST',
+                body: JSON.stringify(payload)
+            });
+            const result = await response.text();
+
+            if (result.includes("Success")) {
+                msg.innerText = action === 'login' ? "Login Berhasil" : "Registrasi Berhasil! Silakan Login.";
+                msg.style.color = "#00ff00";
+                
+                if (action === 'login') {
+                    localStorage.setItem("isLoggedIn", "true");
+                    localStorage.setItem("userNra", payload.nra);
+                    setTimeout(() => window.location.href = "menu.html", 1200);
+                } else {
+                    setTimeout(toggleForm, 1500);
+                }
+            } else {
+                msg.innerText = "Gagal: " + result;
+                msg.style.color = "#ff4444";
+            }
+        } catch (error) {
+            msg.innerText = "Error: Cek koneksi";
+            msg.style.color = "#ff4444";
+        }
+    }
+</script>
+</body>
+</html>
