@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre-Order Official Kaos & Merchandise Jamnas 2 YBCI</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkgrey: '#121212',
+                        carddark: '#1e1e1e',
+                        accentred: '#e50914',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Font Awesome untuk Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-darkgrey text-gray-100 font-sans antialiased selection:bg-accentred selection:text-white">
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-50 bg-darkgrey/90 backdrop-blur-md border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="bg-accentred text-white p-2 rounded-lg font-bold text-xl tracking-wider">
+                    YBCI
+                </div>
+                <div>
+                    <span class="block font-bold text-lg leading-none">JAMNAS 2 YBCI</span>
+                    <span class="text-xs text-gray-400 tracking-widest uppercase">We are family</span>
+                </div>
+            </div>
+            <nav class="hidden md:flex space-x-8 text-sm font-medium text-gray-300">
+                <a href="#about" class="hover:text-accentred transition">Tentang Event</a>
+                <a href="#product" class="hover:text-accentred transition">Detail Kaos</a>
+                <a href="#merch" class="hover:text-accentred transition">Merchandise</a>
+                <a href="#pricing" class="hover:text-accentred transition">Harga & Ukuran</a>
+            </nav>
+            <div>
+                <button onclick="openModal()" class="bg-accentred hover:bg-red-700 text-white px-5 py-2.5 rounded-full font-semibold text-sm shadow-lg shadow-red-600/30 transition transform hover:-translate-y-0.5">
+                    <i class="fa-solid fa-cart-shopping mr-2"></i> Pesan Sekarang
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden py-20 lg:py-32 bg-gradient-to-b from-carddark to-darkgrey border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <span class="inline-block bg-accentred/10 text-accentred text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full border border-accentred/20">
+                        Official Merchandise Pre-Order
+                    </span>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+                        KAOS JAMNAS 2 <span class="text-accentred">YBCI</span>
+                    </h1>
+                    <p class="text-lg text-gray-400 max-w-xl">
+                        "We are not a Club but We are family." Miliki atribut resmi Jambore Nasional ke-2 YBCI dengan kualitas premium standar distro.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                        <button onclick="openModal()" class="bg-accentred hover:bg-red-700 text-white px-8 py-4 rounded-xl font-bold text-center shadow-xl shadow-red-600/25 transition flex items-center justify-center space-x-2">
+                            <span>Formulir Pemesanan</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                        <a href="#product" class="bg-gray-800 hover:bg-gray-700 text-gray-200 px-8 py-4 rounded-xl font-bold text-center transition border border-gray-700">
+                            Lihat Spesifikasi
+                        </a>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-accentred to-purple-600 rounded-3xl blur-xl opacity-30"></div>
+                    <div class="relative bg-carddark border border-gray-800 p-6 rounded-3xl shadow-2xl">
+                        <div class="aspect-[4/3] bg-gray-900 rounded-2xl overflow-hidden relative group">
+    <img
+        src="images/KaosJamnas.png"
+        alt="Kaos Jamnas 2 YBCI"
+        class="w-full h-full object-contain p-6 transition duration-300 group-hover:scale-105"
+    >
+
+    <div class="absolute top-4 right-4 bg-accentred text-white text-xs font-bold px-3 py-1 rounded-full">
+        PRE-ORDER
+    </div>
+</div>
+                        <div class="mt-6 grid grid-cols-3 gap-4 text-center">
+                            <div class="bg-gray-900/60 p-3 rounded-xl border border-gray-800">
+                                <span class="block text-accentred font-bold text-lg">24s</span>
+                                <span class="text-xs text-gray-400">Combed Cotton</span>
+                            </div>
+                            <div class="bg-gray-900/60 p-3 rounded-xl border border-gray-800">
+                                <span class="block text-accentred font-bold text-lg">J&T</span>
+                                <span class="text-xs text-gray-400">Siap Kirim</span>
+                            </div>
+                            <div class="bg-gray-900/60 p-3 rounded-xl border border-gray-800">
+                                <span class="block text-accentred font-bold text-lg">BNI</span>
+                                <span class="text-xs text-gray-400">Secure Pay</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Details Section -->
+    <section id="product" class="py-20 bg-darkgrey">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Spesifikasi & Detail Produk</h2>
+                <p class="mt-4 text-gray-400">Dibuat dengan material pilihan demi kenyamanan berkendara maupun kopdar harian.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-carddark border border-gray-800 p-8 rounded-2xl hover:border-accentred/50 transition duration-300">
+                    <div class="w-12 h-12 bg-accentred/10 rounded-xl flex items-center justify-center text-accentred text-xl mb-6">
+                        <i class="fa-solid fa-palette"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Warna & Desain</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Hadir dengan warna eksklusif <strong>Dark Grey (Abu-abu Gelap)</strong> yang elegan, dipadu sablon tahan lama khas Jamnas YBCI.
+                    </p>
+                </div>
+
+                <div class="bg-carddark border border-gray-800 p-8 rounded-2xl hover:border-accentred/50 transition duration-300">
+                    <div class="w-12 h-12 bg-accentred/10 rounded-xl flex items-center justify-center text-accentred text-xl mb-6">
+                        <i class="fa-solid fa-shirt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Bahan Cotton Combed 24s</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Ketebalan pas, tidak terlalu tipis dan tidak panas. Sangat nyaman menyerap keringat untuk aktivitas touring jarak jauh sekalipun.
+                    </p>
+                </div>
+
+                <div class="bg-carddark border border-gray-800 p-8 rounded-2xl hover:border-accentred/50 transition duration-300">
+                    <div class="w-12 h-12 bg-accentred/10 rounded-xl flex items-center justify-center text-accentred text-xl mb-6">
+                        <i class="fa-solid fa-truck-fast"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Pengiriman Seluruh Indonesia</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Berada di luar kota? Jangan khawatir. Kami siap kirim pesanan Anda ke seluruh wilayah Indonesia via ekspedisi J&T Express.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Merchandise Section -->
+    <section id="merch" class="py-20 bg-carddark border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Pilihan Merchandise Lainnya</h2>
+                <p class="mt-4 text-gray-400">Lengkapi koleksi Jamnas 2 YBCI Anda dengan merchandise pelengkap.</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="bg-darkgrey p-6 rounded-2xl border border-gray-800 text-center group hover:border-accentred transition">
+                    <div class="w-16 h-16 bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-4 text-accentred text-2xl group-hover:scale-110 transition">
+                        <i class="fa-solid fa-hat-cowboy"></i>
+                    </div>
+                    <h4 class="font-bold text-lg">Topi Eksklusif</h4>
+                    <p class="text-xs text-gray-400 mt-1">Desain serasi dengan tema Jamnas</p>
+                </div>
+                <div class="bg-darkgrey p-6 rounded-2xl border border-gray-800 text-center group hover:border-accentred transition">
+                    <div class="w-16 h-16 bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-4 text-accentred text-2xl group-hover:scale-110 transition">
+                        <i class="fa-solid fa-mug-hot"></i>
+                    </div>
+                    <h4 class="font-bold text-lg">Mug Kopi</h4>
+                    <p class="text-xs text-gray-400 mt-1">Temani waktu santai bikers</p>
+                </div>
+                <div class="bg-darkgrey p-6 rounded-2xl border border-gray-800 text-center group hover:border-accentred transition">
+                    <div class="w-16 h-16 bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-4 text-accentred text-2xl group-hover:scale-110 transition">
+                        <i class="fa-solid fa-key"></i>
+                    </div>
+                    <h4 class="font-bold text-lg">Gantungan Kunci</h4>
+                    <p class="text-xs text-gray-400 mt-1">Aksesoris kunci motor andalan</p>
+                </div>
+                <div class="bg-darkgrey p-6 rounded-2xl border border-gray-800 text-center group hover:border-accentred transition">
+                    <div class="w-16 h-16 bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-4 text-accentred text-2xl group-hover:scale-110 transition">
+                        <i class="fa-solid fa-box-open"></i>
+                    </div>
+                    <h4 class="font-bold text-lg">Paket All-In</h4>
+                    <p class="text-xs text-gray-400 mt-1">Lebih hemat & lengkap</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing & Info Section -->
+    <section id="pricing" class="py-20 bg-darkgrey border-t border-gray-800">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-carddark border border-gray-800 rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-accentred text-white text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-bl-2xl">
+                    Informasi Pembayaran
+                </div>
+
+                <h3 class="text-2xl font-bold mb-6">Panduan & Ketentuan Order</h3>
+                
+                <div class="space-y-4 text-gray-300 text-sm sm:text-base">
+                    <div class="flex items-start space-x-3">
+                        <i class="fa-solid fa-circle-check text-accentred mt-1"></i>
+                        <div><strong>Ukuran Tersedia:</strong> S, M, L, dan XL. Untuk ukuran di atas XL dikenakan penambahan biaya sebesar <strong>Rp 5.000</strong>.</div>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <i class="fa-solid fa-circle-check text-accentred mt-1"></i>
+                        <div><strong>Biaya Kirim:</strong> Harga kaos belum termasuk ongkos kirim dari kota pengirim.</div>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <i class="fa-solid fa-circle-check text-accentred mt-1"></i>
+                        <div><strong>Rekening Transfer Resmi:</strong><br>
+                            Bank BNI: <span class="text-accentred font-mono font-bold text-lg">430270614</span><br>
+                            Atas Nama: <strong>ADI WISASTRA</strong>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <i class="fa-solid fa-circle-check text-accentred mt-1"></i>
+                        <div><strong>Narahubung / WhatsApp:</strong> <a href="https://wa.me/6285725005556" target="_blank" class="text-accentred hover:underline font-semibold">0857-2500-5556 (Adi Wisastra)</a></div>
+                    </div>
+                </div>
+
+                <div class="mt-10 text-center">
+                    <button onclick="openModal()" class="bg-accentred hover:bg-red-700 text-white px-8 py-4 rounded-xl font-bold shadow-xl shadow-red-600/30 transition transform hover:-translate-y-0.5 inline-flex items-center space-x-2">
+                        <span>Isi Form Pemesanan Sekarang</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black/40 border-t border-gray-800 py-8 text-center text-sm text-gray-500">
+        <p class="mb-2 font-medium text-gray-400">We are not a club but we are family</p>
+        <p>&copy; 2026 Jamnas 2 YBCI. Production Bawah Tangga &bullet; productionbawahtangga@gmail.com</p>
+    </footer>
+
+    <!-- MODAL FORM PEMESANAN -->
+    <div id="orderModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm hidden p-4 overflow-y-auto">
+        <div class="bg-carddark border border-gray-800 rounded-3xl max-w-xl w-full p-6 sm:p-8 relative my-8 shadow-2xl">
+            <button onclick="closeModal()" class="absolute top-6 right-6 text-gray-400 hover:text-white text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <h3 class="text-2xl font-bold mb-1 text-accentred">Formulir Pre-Order</h3>
+            <p class="text-xs text-gray-400 mb-6">Lengkapi data diri Anda dan upload bukti transfer pembayaran.</p>
+
+            <form id="orderForm" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">Nama Lengkap *</label>
+                    <input type="text" id="nama" required class="w-full bg-darkgrey border border-gray-700 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-accentred" placeholder="Masukkan nama lengkap">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">Alamat Pengiriman Lengkap *</label>
+                    <textarea id="alamat" required rows="3" class="w-full bg-darkgrey border border-gray-700 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-accentred" placeholder="Nama Jalan, Kelurahan, Kecamatan, Kota, Provinsi"></textarea>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">No HP / WhatsApp *</label>
+                    <input type="tel" id="nohp" required class="w-full bg-darkgrey border border-gray-700 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-accentred" placeholder="Contoh: 0857xxxxxxxx">
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">Ukuran Kaos *</label>
+                        <select id="ukuran" required class="w-full bg-darkgrey border border-gray-700 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-accentred">
+                            <option value="">-- Pilih Ukuran --</option>
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
+                            <option value="XXL / Lebih">XXL atau Lebih (+5K)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">Merchandise Lain</label>
+                        <select id="merchandise" class="w-full bg-darkgrey border border-gray-700 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-accentred">
+                            <option value="Tidak Pesan">Tidak Pesan</option>
+                            <option value="Topi">Topi</option>
+                            <option value="Mug">Mug</option>
+                            <option value="Gantungan Kunci">Gantungan Kunci</option>
+                            <option value="Paket Merchandise All In">Paket Merchandise All In</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">Upload Bukti Transfer (Maks 10 MB) *</label>
+                    <input type="file" id="buktiTF" required accept="image/*,application/pdf" class="w-full bg-darkgrey border border-gray-700 rounded-xl px-4 py-2.5 text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-accentred file:text-white hover:file:bg-red-700 cursor-pointer">
+                </div>
+
+                <button type="submit" id="submitBtn" class="w-full bg-accentred hover:bg-red-700 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-red-600/30 transition mt-4">
+                    KIRIM PESANAN SEKARANG
+                </button>
+                <div id="loadingText" class="hidden text-center text-accentred font-semibold text-sm pt-2">
+                    <i class="fa-solid fa-spinner fa-spin mr-2"></i> Sedang mengirim data dan mengunggah file...
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Script Integrasi Google Sheets & Modal Handler -->
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwI7eFgQlJ0zUcIoMXcB5Uym44Zr00-0I5AyNSxh25fyZyvHdnOiZ1ZE60BeXGuuwzAPQ/exec'; // Ganti dengan URL Apps Script Anda
+
+        function openModal() {
+            document.getElementById('orderModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('orderModal').classList.add('hidden');
+        }
+
+        const form = document.getElementById('orderForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const loadingText = document.getElementById('loadingText');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            submitBtn.style.display = 'none';
+            loadingText.style.display = 'block';
+
+            const fileInput = document.getElementById('buktiTF');
+            const file = fileInput.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = function () {
+                    sendData(reader.result, file.name, file.type);
+                };
+                reader.onerror = function (error) {
+                    alert("Gagal membaca file: " + error);
+                    resetFormState();
+                };
+            } else {
+                sendData("", "", "");
+            }
+        });
+
+        function sendData(fileData, fileName, fileType) {
+            const data = {
+                nama: document.getElementById('nama').value,
+                alamat: document.getElementById('alamat').value,
+                nohp: document.getElementById('nohp').value,
+                ukuran: document.getElementById('ukuran').value,
+                merchandise: document.getElementById('merchandise').value,
+                fileData: fileData,
+                fileName: fileName,
+                fileType: fileType
+            };
+
+            fetch(scriptURL, {
+                method: 'POST',
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(response => {
+                alert("Terima kasih! Pesanan dan bukti transfer berhasil dikirim.");
+                form.reset();
+                closeModal();
+                resetFormState();
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                alert("Terjadi kesalahan, silakan coba lagi.");
+                resetFormState();
+            });
+        }
+
+        function resetFormState() {
+            submitBtn.style.display = 'block';
+            loadingText.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
