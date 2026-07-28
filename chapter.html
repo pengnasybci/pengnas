@@ -3,92 +3,251 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Yaris Bapao Club Indonesia</title>
+  <title>All Chapter - Yaris Bapao Club Indonesia</title>
 
   <!-- Icon Logo -->
   <link rel="icon" type="image/png" href="images/logo.png">
   <link rel="shortcut icon" type="image/png" href="images/ybci2.png">
 
+  <!-- CSS FILES -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;500;700&display=swap" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/bootstrap-icons.css" rel="stylesheet">
+
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 20px;
+      :root {
+          --ybci-red: #e60000;
+          --ybci-dark: #121212;
+          --ybci-light: #f9f9f9;
+          --ybci-white: #ffffff;
+      }
 
-      /* Background gambar */
-      background: url("images/ybci.jpg") no-repeat center center fixed;
-      background-size: cover;
+      body {
+          font-family: 'Unbounded', sans-serif;
+          background-color: var(--ybci-dark);
+          color: var(--ybci-white);
+          margin: 0;
+          padding: 0 0 100px 0;
+          overflow-x: hidden;
+      }
 
-      color: #fff; /* Teks default putih */
-    }
-    h1 {
-      text-align: center;
-      margin-bottom: 30px;
-      text-shadow: 2px 2px 5px rgba(0,0,0,0.7); /* agar tulisan lebih jelas */
-    }
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 15px;
-    }
-    .gallery a {
-      display: block;
-      overflow: hidden;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.6);
-      transition: transform 0.3s ease;
-    }
-    .gallery a:hover {
-      transform: scale(1.05);
-    }
-    .gallery img {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-      display: block;
-    }
+      /* Navbar */
+      .navbar-ybci {
+          background-color: rgba(18, 18, 18, 0.85) !important;
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          padding: 12px 0;
+          position: sticky;
+          top: 0;
+          z-index: 1000;
+          box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      }
 
-    /* Tulisan berjalan di bawah halaman */
-    .running-text {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      font-size: 50px;       /* lebih besar */
-      font-weight: bold;
-      color: #ff0000;        /* merah */
-      background: rgba(0,0,0,0.7); /* transparan biar tidak nutupi full */
-      padding: 10px 0;
-      z-index: 999;
-    }
+      .navbar-ybci .navbar-brand img {
+          max-height: 44px;
+          transition: transform 0.3s ease;
+      }
+      .navbar-ybci .navbar-brand img:hover {
+          transform: scale(1.05);
+      }
+
+      .navbar-ybci .nav-link {
+          color: #cccccc !important;
+          font-size: 0.75rem;
+          font-weight: 500;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          padding: 8px 12px !important;
+          transition: color 0.3s ease;
+      }
+      .navbar-ybci .nav-link:hover {
+          color: var(--ybci-white) !important;
+      }
+
+      /* Container */
+      .content-container {
+          padding: 50px 20px;
+          max-width: 1200px;
+          margin: 0 auto;
+      }
+
+      h1 {
+          text-align: center;
+          margin-bottom: 40px;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          border-left: 4px solid var(--ybci-red);
+          display: inline-block;
+          padding-left: 15px;
+      }
+
+      .header-wrapper {
+          text-align: center;
+          margin-bottom: 20px;
+      }
+
+      .gallery {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+          gap: 20px;
+      }
+
+      /* Kartu Chapter dengan Animasi Muncul Lebih Lambat & Elegan */
+      .gallery a {
+          position: relative;
+          display: block;
+          overflow: hidden;
+          border-radius: 14px;
+          background: #1e1e1e;
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+          text-decoration: none;
+          
+          opacity: 0;
+          transform: translateY(40px);
+          animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+
+      /* Jeda waktu kemunculan satu per satu yang lebih lambat dan mulus */
+      .gallery a:nth-child(1)  { animation-delay: 0.15s; }
+      .gallery a:nth-child(2)  { animation-delay: 0.30s; }
+      .gallery a:nth-child(3)  { animation-delay: 0.45s; }
+      .gallery a:nth-child(4)  { animation-delay: 0.60s; }
+      .gallery a:nth-child(5)  { animation-delay: 0.75s; }
+      .gallery a:nth-child(6)  { animation-delay: 0.90s; }
+      .gallery a:nth-child(7)  { animation-delay: 1.05s; }
+      .gallery a:nth-child(8)  { animation-delay: 1.20s; }
+      .gallery a:nth-child(9)  { animation-delay: 1.35s; }
+      .gallery a:nth-child(10) { animation-delay: 1.50s; }
+      .gallery a:nth-child(11) { animation-delay: 1.65s; }
+      .gallery a:nth-child(12) { animation-delay: 1.80s; }
+      .gallery a:nth-child(13) { animation-delay: 1.95s; }
+      .gallery a:nth-child(14) { animation-delay: 2.10s; }
+      .gallery a:nth-child(15) { animation-delay: 2.25s; }
+
+      @keyframes fadeInUp {
+          to {
+              opacity: 1;
+              transform: translateY(0);
+          }
+      }
+
+      /* Efek Hover Glow Merah */
+      .gallery a:hover {
+          transform: translateY(-8px) scale(1.02);
+          border-color: var(--ybci-red);
+          box-shadow: 0 15px 35px rgba(230, 0, 0, 0.35);
+          transition: all 0.4s ease;
+      }
+
+      .gallery img {
+          width: 100%;
+          height: 170px;
+          object-fit: cover;
+          display: block;
+          transition: transform 0.6s ease;
+      }
+
+      .gallery a:hover img {
+          transform: scale(1.08);
+      }
+
+      /* Label nama chapter yang muncul dari bawah saat di-hover */
+      .chapter-label {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+          color: #fff;
+          font-size: 0.85rem;
+          font-weight: bold;
+          text-align: center;
+          padding: 15px 10px 10px 10px;
+          opacity: 0;
+          transform: translateY(10px);
+          transition: all 0.3s ease;
+      }
+
+      .gallery a:hover .chapter-label {
+          opacity: 1;
+          transform: translateY(0);
+      }
+
+      /* Running Text di Bawah */
+      .running-text {
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          font-size: 28px;
+          font-weight: bold;
+          color: var(--ybci-white);
+          background: rgba(18, 18, 18, 0.9);
+          backdrop-filter: blur(10px);
+          border-top: 2px solid var(--ybci-red);
+          padding: 12px 0;
+          z-index: 999;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+      }
+      
+      .running-text span {
+          color: var(--ybci-red);
+      }
   </style>
 </head>
 <body>
 
-  <h1>All Chapter YBCI</h1>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-ybci">
+      <div class="container-fluid px-4">
+          <a class="navbar-brand me-3" href="index.html">
+              <img src="images/ybci2.png" alt="YBCI Logo" class="img-fluid">
+          </a>
+          <div class="ms-auto">
+              <a href="index.html" class="nav-link d-inline-block text-white fw-bold"><i class="bi-house-door me-1"></i> Back to Home</a>
+          </div>
+      </div>
+  </nav>
 
-  <div class="gallery">
-    <a href="chapter/aceh.html"><img src="images/aceh.jpg" alt="Foto 1"></a>
-    <a href="chapter/bandung.html"><img src="images/bandung.jpg" alt="Foto 2"></a>
-    <a href="chapter/banray.html"><img src="images/banten.jpg" alt="Foto 3"></a>
-    <a href="chapter/barlingmascap.html"><img src="images/barlinfmascap.jpg" alt="Foto 4"></a>
-    <a href="chapter/bekasi.html"><img src="images/bekasi.jpg" alt="Foto 5"></a>
-    <a href="chapter/bogor.html"><img src="images/bogor.jpg" alt="Foto 6"></a>
-    <a href="index.html"><img src="images/karawang.jpg" alt="Foto 7"></a>
-    <a href="chapter/priatim.html"><img src="images/priatim.jpg" alt="Foto 8"></a>
-    <a href="index.html"><img src="images/purwakarta.jpg" alt="Foto 9"></a>
-    <a href="chapter/semarang.html"><img src="images/semarang raya.jpg" alt="Foto 10"></a>
-    <a href="chapter/sriwijaya.html"><img src="images/sriwijaya.jpg" alt="Foto 11"></a>
-    <a href="index.html"><img src="images/subang.jpg" alt="Foto 12"></a>
-    <a href="chapter/suci.html"><img src="images/suci.jpg" alt="Foto 13"></a>
-    <a href="chapter/ciayumajakung.html"><img src="images/ciayumajakuning.jpeg" alt="Foto 14"></a>
-    <a href="index.html"><img src="images/ybci.jpg" alt="Foto 15"></a>
+  <!-- KONTEN GALERI CHAPTER -->
+  <div class="content-container">
+      <div class="header-wrapper">
+          <h1>All Chapter YBCI</h1>
+      </div>
+
+      <div class="gallery">
+        <a href="chapter/aceh.html"><img src="images/aceh.jpg" alt="Aceh"><div class="chapter-label">Chapter Aceh</div></a>
+        <a href="chapter/bandung.html"><img src="images/bandung.jpg" alt="Bandung"><div class="chapter-label">Chapter Bandung</div></a>
+        <a href="chapter/banray.html"><img src="images/banten.jpg" alt="Banten"><div class="chapter-label">Chapter Banten Raya</div></a>
+        <a href="chapter/barlingmascap.html"><img src="images/barlinfmascap.jpg" alt="Barlingmascap"><div class="chapter-label">Chapter Barlingmascap</div></a>
+        <a href="chapter/bekasi.html"><img src="images/bekasi.jpg" alt="Bekasi"><div class="chapter-label">Chapter Bekasi</div></a>
+        <a href="chapter/bogor.html"><img src="images/bogor.jpg" alt="Bogor"><div class="chapter-label">Chapter Bogor</div></a>
+        <a href="index.html"><img src="images/karawang.jpg" alt="Karawang"><div class="chapter-label">Chapter Karawang</div></a>
+        <a href="chapter/priatim.html"><img src="images/priatim.jpg" alt="Priatim"><div class="chapter-label">Chapter Priatim</div></a>
+        <a href="index.html"><img src="images/purwakarta.jpg" alt="Purwakarta"><div class="chapter-label">Chapter Purwakarta</div></a>
+        <a href="chapter/semarang.html"><img src="images/semarang raya.jpg" alt="Semarang Raya"><div class="chapter-label">Chapter Semarang Raya</div></a>
+        <a href="chapter/sriwijaya.html"><img src="images/sriwijaya.jpg" alt="Sriwijaya"><div class="chapter-label">Chapter Sriwijaya</div></a>
+        <a href="index.html"><img src="images/subang.jpg" alt="Subang"><div class="chapter-label">Chapter Subang</div></a>
+        <a href="chapter/suci.html"><img src="images/suci.jpg" alt="SUCI"><div class="chapter-label">Chapter SUCI</div></a>
+        <a href="chapter/ciayumajakung.html"><img src="images/ciayumajakuning.jpeg" alt="Ciayumajakuning"><div class="chapter-label">Chapter Ciayumajakuning</div></a>
+        <a href="index.html"><img src="images/ybci.jpg" alt="YBCI"><div class="chapter-label">YBCI Pusat</div></a>
+      </div>
   </div>
 
-  <!-- Tulisan berjalan fixed di bawah -->
+  <!-- RUNNING TEXT -->
   <marquee class="running-text" behavior="scroll" direction="left">
-    We Are Not a Club But We Are Family
+    We Are Not a Club But We Are <span>Family</span> &mdash; Yaris Bapao Club Indonesia
   </marquee>
+
+  <!-- JAVASCRIPT FILES -->
+  <script src="js/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
