@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Jambore Nasional ke-2 Yaris Bapao Club Indonesia (YBCI)">
+        <meta name="author" content="">
+
+        <title>Jamnas 2 YBCI - Candi Sojiwan, Klaten</title>
+
+        <!-- Favicon -->
+        <link rel="icon" type="image/png" href="images/ybci2.png">
+
+        <!-- CSS FILES -->       
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;500;700&display=swap" rel="stylesheet">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap-icons.css" rel="stylesheet">
+
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-3ZFDB3ZDW9"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-3ZFDB3ZDW9');
+        </script>
+
+        <!-- CSS Styling Khusus Jamnas -->
+        <style>
+            :root {
+                --ybci-red: #e60000;
+                --ybci-dark: #121212;
+                --ybci-light: #f9f9f9;
+                --ybci-white: #ffffff;
+            }
+
+            body {
+                font-family: 'Unbounded', sans-serif;
+                background-color: var(--ybci-white);
+                color: var(--ybci-dark);
+                overflow-x: hidden;
+            }
+
+            /* Scroll Progress Bar */
+            #scroll-progress {
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 3px;
+                background-color: var(--ybci-red);
+                width: 0%;
+                z-index: 10001;
+                transition: width 0.1s ease-out;
+            }
+
+            /* Glassmorphism Navbar */
+            .navbar-ybci {
+                background-color: rgba(18, 18, 18, 0.85) !important;
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                padding: 12px 0;
+                position: sticky;
+                top: 0;
+                z-index: 1000;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            }
+
+            .navbar-ybci .navbar-brand {
+                position: relative;
+                z-index: 1005;
+                pointer-events: auto !important;
+            }
+
+            .navbar-ybci .navbar-brand img {
+                max-height: 44px;
+                transition: transform 0.3s ease;
+                pointer-events: auto !important;
+            }
+            .navbar-ybci .navbar-brand img:hover {
+                transform: scale(1.05);
+            }
+
+            .navbar-ybci .nav-link {
+                color: #cccccc !important;
+                font-size: 0.75rem;
+                font-weight: 500;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                padding: 8px 12px !important;
+                position: relative;
+                transition: color 0.3s ease;
+            }
+
+            .navbar-ybci .nav-link::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 12px;
+                right: 12px;
+                height: 2px;
+                background-color: var(--ybci-red);
+                transform: scaleX(0);
+                transition: transform 0.3s ease;
+            }
+
+            .navbar-ybci .nav-link:hover, 
+            .navbar-ybci .nav-link.active {
+                color: var(--ybci-white) !important;
+            }
+
+            .navbar-ybci .nav-link:hover::after, 
+            .navbar-ybci .nav-link.active::after {
+                transform: scaleX(1);
+            }
+
+            .navbar-toggler {
+                border-color: rgba(255,255,255,0.1);
+                padding: 4px 8px;
+            }
+
+            .navbar-toggler-icon {
+                width: 24px;
+                height: 24px;
+                background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+            }
+
+            /* Jamnas Hero Section */
+            .jamnas-hero {
+                background: linear-gradient(rgba(18,18,18,0.85), rgba(18,18,18,0.9)), url('images/services/jamnas.jpg') center/cover;
+                min-height: 90vh;
+                display: flex;
+                align-items: center;
+                color: var(--ybci-white);
+                text-align: center;
+                padding: 80px 0;
+            }
+
+            /* Button Styling */
+            .btn-ybci-red {
+                background-color: var(--ybci-red);
+                color: var(--ybci-white);
+                border: none;
+                transition: opacity 0.3s ease;
+            }
+            .btn-ybci-red:hover {
+                opacity: 0.85;
+                color: var(--ybci-white);
+            }
+
+            /* Sections */
+            .section-padding {
+                padding: 80px 0;
+            }
+            
+            .bg-light-custom {
+                background-color: var(--ybci-light);
+            }
+
+            .card-custom {
+                border: none;
+                background: var(--ybci-white);
+                box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+                border-radius: 12px;
+                overflow: hidden;
+                transition: transform 0.3s ease;
+            }
+            .card-custom:hover {
+                transform: translateY(-5px);
+            }
+
+            /* Activity Item Card */
+            .activity-card {
+                background: var(--ybci-white);
+                border-radius: 12px;
+                padding: 25px;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+                height: 100%;
+                border-left: 4px solid var(--ybci-red);
+                transition: transform 0.3s ease;
+            }
+            .activity-card:hover {
+                transform: translateY(-5px);
+            }
+
+            /* Floating WhatsApp Button */
+            .whatsapp-float {
+                position: fixed;
+                bottom: 25px;
+                right: 25px;
+                background-color: #25d366;
+                color: #fff;
+                width: 55px;
+                height: 55px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 30px;
+                box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+                z-index: 999;
+                transition: all 0.3s ease;
+                text-decoration: none;
+            }
+            .whatsapp-float:hover {
+                background-color: #20ba5a;
+                color: #fff;
+                transform: scale(1.1);
+            }
+
+            /* Footer */
+            footer {
+                background-color: var(--ybci-dark);
+                color: var(--ybci-white);
+                padding: 50px 0 20px 0;
+            }
+        </style>
+    </head>
+    
+    <body>
+
+        <!-- Scroll Progress Bar -->
+        <div id="scroll-progress"></div>
+
+        <!-- Floating WhatsApp Button -->
+        <a href="https://wa.me/628976080055?text=Halo%20Admin%20YBCI,%20saya%20ingin%20bertanya%20mengenai%20Jamnas%202%20YBCI" target="_blank" class="whatsapp-float" aria-label="WhatsApp Chat">
+            <i class="bi-whatsapp"></i>
+        </a>
+
+        <!-- TOP NAVBAR -->
+        <nav class="navbar navbar-expand-lg navbar-dark navbar-ybci">
+            <div class="container-fluid px-4">
+                <a class="navbar-brand me-3" href="index.html">
+                    <img src="images/ybci2.png" alt="YBCI Logo" class="img-fluid">
+                </a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav align-items-lg-center">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="jamnas.html">Jamnas 2nd</a></li>
+                        <li class="nav-item"><a class="nav-link" href="chapter.html">Chapter</a></li>
+                        <li class="nav-item"><a class="nav-link" href="member.html">Member</a></li>
+                        <li class="nav-item"><a class="nav-link" href="Berita.html">News</a></li>
+                        <li class="nav-item"><a class="nav-link" href="kalender.html">Calendar</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- MAIN CONTENT -->
+        <div class="container-fluid p-0">
+                    
+            <!-- HERO SECTION JAMNAS -->
+            <section class="jamnas-hero">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-10 col-12">
+                            <span class="badge bg-danger mb-3 px-3 py-2 text-uppercase tracking-wide">🔥 Perhelatan Akbar Terbesar 2026 🔥</span>
+                            <h1 class="text-white display-4 fw-bold mb-3">JAMBORE NASIONAL KE-2<br>YARIS BAPAO CLUB INDONESIA</h1>
+                            <h3 class="text-danger fw-bold mb-4">"TOGETHER IN UNITY"</h3>
+                            
+                            <div class="d-flex flex-wrap justify-content-center gap-4 mb-4 text-light fs-5">
+                                <div><i class="bi-geo-alt-fill text-danger me-2"></i> Candi Sojiwan, Klaten - Jawa Tengah</div>
+                                <div><i class="bi-calendar-event-fill text-danger me-2"></i> 10–11 Oktober 2026</div>
+                            </div>
+
+                            <div class="d-flex flex-wrap justify-content-center gap-3">
+                                <a href="OrderKaosJamnas.html" class="btn btn-ybci-red px-5 py-3 rounded-pill fw-bold">Order Merchandise Jamnas</a>
+                                <a href="#about-jamnas" class="btn btn-outline-light px-5 py-3 rounded-pill fw-bold">Pelajari Acara</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ABOUT / WELCOME SECTION -->
+            <section class="section-padding bg-white" id="about-jamnas">
+                <div class="container px-4">
+                    <div class="row justify-content-center text-center mb-5">
+                        <div class="col-lg-9">
+                            <h2 class="fw-bold mb-3">Satu Semangat... Satu Persaudaraan... Satu Keluarga Besar YBCI!</h2>
+                            <p class="text-secondary fs-6 lh-lg mb-4">
+                                Bersiaplah menjadi bagian dari perhelatan akbar terbesar YBCI tahun 2026, di mana seluruh chapter dari berbagai penjuru Indonesia akan berkumpul dalam kebersamaan, mempererat silaturahmi, dan menciptakan momen yang tak terlupakan.
+                            </p>
+                            <div class="p-4 bg-light rounded border-start border-danger border-4 text-start">
+                                <p class="mb-0 fst-italic text-dark">
+                                    "Ini bukan sekadar jambore. Ini adalah momentum untuk kembali dipersatukan dalam semangat kekeluargaan, membangun persahabatan tanpa batas, dan membuktikan bahwa YBCI selalu menjadi rumah bagi seluruh pecinta Yaris Bapao."
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- AGENDA & ACTIVITIES SECTION -->
+            <section class="section-padding bg-light-custom" id="activities">
+                <div class="container px-4">
+                    <div class="row mb-5 text-center">
+                        <div class="col-lg-12">
+                            <h2 class="fw-bold mb-2">Rangkaian Acara & Kegiatan Seru</h2>
+                            <p class="text-muted">Nikmati berbagai kegiatan spesial selama dua hari penuh bersama keluarga besar YBCI</p>
+                        </div>
+                    </div>
+
+                    <div class="row g-4">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="activity-card">
+                                <div class="fs-2 text-danger mb-3"><i class="bi-headphones"></i></div>
+                                <h5 class="fw-bold text-dark">DJ Performance</h5>
+                                <p class="text-muted small mb-0">Siap membakar semangat malam kebersamaan dengan tata panggung dan musik energik.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6">
+                            <div class="activity-card">
+                                <div class="fs-2 text-danger mb-3"><i class="bi-mic"></i></div>
+                                <h5 class="fw-bold text-dark">Panggung Dangdut</h5>
+                                <p class="text-muted small mb-0">Hiburan spektakuler yang meriah dan menghibur seluruh member yang hadir.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6">
+                            <div class="activity-card">
+                                <div class="fs-2 text-danger mb-3"><i class="bi-trophy"></i></div>
+                                <h5 class="fw-bold text-dark">Lomba Antar Chapter</h5>
+                                <p class="text-muted small mb-0">Kompetisi seru yang penuh dengan kreativitas, kekompakan, dan sportivitas tinggi.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6">
+                            <div class="activity-card">
+                                <div class="fs-2 text-danger mb-3"><i class="bi-controller"></i></div>
+                                <h5 class="fw-bold text-dark">Fun Games Antar Chapter</h5>
+                                <p class="text-muted small mb-0">Permainan seru dan interaktif yang dijamin mengundang tawa serta keakraban.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6">
+                            <div class="activity-card">
+                                <div class="fs-2 text-danger mb-3"><i class="bi-car-front"></i></div>
+                                <h5 class="fw-bold text-dark">Modification Contest</h5>
+                                <p class="text-muted small mb-0">Menampilkan jajaran mobil Yaris Bapao terbaik dan paling keren dari seluruh Indonesia.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6">
+                            <div class="activity-card">
+                                <div class="fs-2 text-danger mb-3"><i class="bi-gift"></i></div>
+                                <h5 class="fw-bold text-dark">Doorprize & Hadiah</h5>
+                                <p class="text-muted small mb-0">Berbagai doorprize menarik dan hadiah istimewa menanti para peserta yang beruntung.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6">
+                            <div class="activity-card">
+                                <div class="fs-2 text-danger mb-3"><i class="bi-camera"></i></div>
+                                <h5 class="fw-bold text-dark">Spot Foto Ikonik</h5>
+                                <p class="text-muted small mb-0">Abadikan momen terbaik berlatar belakang kemegahan sejarah Candi Sojiwan.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6">
+                            <div class="activity-card">
+                                <div class="fs-2 text-danger mb-3"><i class="bi-people"></i></div>
+                                <h5 class="fw-bold text-dark">Gathering & Networking</h5>
+                                <p class="text-muted small mb-0">Ajang silaturahmi akbar untuk mempererat persaudaraan antar member se-nusantara.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6">
+                            <div class="activity-card">
+                                <div class="fs-2 text-danger mb-3"><i class="bi-heart-fill"></i></div>
+                                <h5 class="fw-bold text-dark">Keluarga Besar YBCI</h5>
+                                <p class="text-muted small mb-0">Merayakan kebersamaan dalam satu visi tema: "Together in Unity".</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CALL TO ACTION BANNER -->
+            <section class="py-5 text-white text-center" style="background-color: var(--ybci-dark);">
+                <div class="container py-4">
+                    <h2 class="fw-bold mb-3">Mari Kita Ukir Sejarah Bersama di JAMNAS 2 YBCI!</h2>
+                    <p class="text-light opacity-75 mb-4">🚗💨 Siapkan kendaraan terbaikmu | 🎉 Ajak seluruh chapter dan keluargamu</p>
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="OrderKaosJamnas.html" class="btn btn-ybci-red px-4 py-3 rounded-pill fw-bold">Pesan Kaos Jamnas Sekarang</a>
+                        <a href="https://wa.me/628976080055?text=Halo%20Admin,%20saya%20ingin%20konfirmasi%20kehadiran%20Jamnas%202%20YBCI" target="_blank" class="btn btn-outline-light px-4 py-3 rounded-pill fw-bold">Konfirmasi Via WhatsApp</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CLOSING QUOTE SECTION -->
+            <section class="section-padding bg-white text-center">
+                <div class="container px-4">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                            <h4 class="fw-bold text-danger mb-3">Sampai jumpa pada 10–11 Oktober 2026 di Candi Sojiwan!</h4>
+                            <p class="fs-6 text-muted fst-italic">
+                                "YBCI....Bravo...bravo...bravo....we are not club but we are family"
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FOOTER -->
+            <footer>
+                <div class="container px-4">
+                    <div class="row mb-4">
+                        <div class="col-md-12">
+                            <h5 class="text-white fw-bold mb-3">Sekretariat Address</h5>
+                            <p class="text-light opacity-75 small">Perumahan Triraksa Village Blok A8 No.36 Tiga Raksa Kab. Tangerang Prov. Banten</p>
+                        </div>
+                    </div>
+                    <div class="row align-items-center pt-3 border-top border-secondary">
+                        <div class="col-md-8">
+                            <p class="small text-muted mb-0">Copyright © 2026 YBCI - Design: <a href="https://bawahtangga.web.id/" rel="nofollow" target="_blank" class="text-light">Bawah Tangga Production</a></p>
+                        </div>
+                        <div class="col-md-4 text-end">
+                            <a href="#top" class="text-danger fs-3"><i class="bi-arrow-up-circle"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+
+        <!-- JAVASCRIPT FILES -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script>
+            // Scroll Progress Script
+            window.addEventListener('scroll', function() {
+                const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                document.getElementById('scroll-progress').style.width = scrolled + '%';
+            });
+        </script>
+    </body>
+</html>
