@@ -1,487 +1,597 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="id">
 <head>
     <meta charset="utf-8">
     <title>YBCI Chapter Aceh-Sumut</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="YBCI Chapter Aceh-Sumut" name="keywords">
-    <meta content="YBCI Chapter Aceh-Sumut" name="description">
-
-     <!-- Favicon -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="img/ybci2.png">
-
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Rubik&display=swap" rel="stylesheet"> 
-
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --ybci-red: #E60012;
+            --ybci-dark: #121212;
+            --ybci-light: #F8F9FA;
+            --ybci-gray-bg: #F1F3F5;
+        }
 
-    <!-- Libraries Stylesheet -->
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #FFFFFF;
+            color: #212529;
+            overflow-x: hidden;
+        }
 
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+        h1, h2, h3, h4, h5, h6, .brand-font {
+            font-family: 'Montserrat', sans-serif;
+        }
 
-    <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+        /* Top Bar */
+        .top-bar {
+            background-color: var(--ybci-dark);
+            border-bottom: 3px solid var(--ybci-red);
+            font-size: 0.9rem;
+        }
+        .top-bar a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .top-bar a:hover {
+            color: var(--ybci-red);
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: var(--ybci-dark) !important;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            padding: 15px 0;
+        }
+        .navbar-brand h1 {
+            font-weight: 900;
+            font-size: 1.6rem;
+            color: #FFFFFF;
+            letter-spacing: 1px;
+            margin: 0;
+        }
+        .navbar-brand span {
+            color: var(--ybci-red);
+        }
+        .nav-link {
+            color: #FFFFFF !important;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            padding: 8px 16px !important;
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: var(--ybci-red) !important;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)), url('img/carousel-1.jpg') center/cover no-repeat;
+            padding: 130px 0 110px 0;
+            border-bottom: 5px solid var(--ybci-red);
+            text-align: center;
+            color: #FFFFFF;
+        }
+        .hero-section h4 {
+            color: var(--ybci-red);
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+
+        /* Buttons */
+        .btn-ybci-red {
+            background-color: var(--ybci-red);
+            color: #FFFFFF;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 12px 30px;
+            border-radius: 50px;
+            border: 2px solid var(--ybci-red);
+            transition: all 0.3s ease;
+        }
+        .btn-ybci-red:hover {
+            background-color: transparent;
+            color: var(--ybci-red);
+            border-color: var(--ybci-red);
+        }
+        .btn-outline-light-custom {
+            border: 2px solid #fff;
+            color: #fff;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 12px 30px;
+            border-radius: 50px;
+            background: transparent;
+            transition: all 0.3s ease;
+        }
+        .btn-outline-light-custom:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-title span.number {
+            font-size: 1rem;
+            font-weight: 800;
+            color: var(--ybci-red);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: #212529;
+        }
+        .section-title h2 span {
+            color: var(--ybci-red);
+        }
+
+        /* Cards & Backgrounds (Light Theme) */
+        .bg-custom-light {
+            background-color: var(--ybci-gray-bg);
+            border-radius: 15px;
+            border: 1px solid #DEE2E6;
+        }
+        .card-feature {
+            background: #FFFFFF;
+            border-left: 4px solid var(--ybci-red);
+            border-radius: 10px;
+            padding: 25px;
+            height: 100%;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        .card-feature:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Team Cards */
+        .team-card {
+            background: #FFFFFF;
+            border-radius: 15px;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border-bottom: 4px solid var(--ybci-red);
+            transition: transform 0.3s;
+            height: 100%;
+        }
+        .team-card:hover {
+            transform: translateY(-8px);
+        }
+        .team-img-wrapper {
+            position: relative;
+            overflow: hidden;
+            height: 250px;
+        }
+        .team-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Sponsors / Vendors */
+        .sponsor-box {
+            background: #FFFFFF;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border: 1px solid #E9ECEF;
+            transition: all 0.3s;
+        }
+        .sponsor-box:hover {
+            border-color: var(--ybci-red);
+            box-shadow: 0 5px 15px rgba(230,0,18,0.15);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--ybci-dark);
+            border-top: 3px solid var(--ybci-red);
+            padding-top: 70px;
+            color: #adb5bd;
+        }
+        footer h4 {
+            color: #fff;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+        /* Perbaikan warna teks navigasi footer agar terbaca jelas */
+        footer ul.list-unstyled a {
+            color: #adb5bd !important;
+            transition: color 0.3s ease;
+        }
+        footer ul.list-unstyled a:hover {
+            color: var(--ybci-red) !important;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            background: #212529;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: #fff;
+            margin-right: 10px;
+            transition: background 0.3s, color 0.3s;
+        }
+        .social-icon:hover {
+            background: var(--ybci-red);
+            color: #fff;
+        }
+    </style>
 </head>
-
 <body>
+
     <!-- Topbar Start -->
-    <div class="container-fluid bg-dark py-3 px-lg-5 d-none d-lg-block">
-        <div class="row">
-            <div class="col-md-6 text-center text-lg-left mb-2 mb-lg-0">
-                <div class="d-inline-flex align-items-center">
-                    <a class="text-body pr-3" href=""><i class="fa fa-phone-alt mr-2"></i>0811-670-9989</a>
-                    <span class="text-body">|</span>
-                    <a class="text-body px-3" href=""><i class="fa fa-envelope mr-2"></i>acehsumut@ybci.org</a>
-                </div>
+    <div class="top-bar py-2 px-lg-5 d-none d-lg-block">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+            <div>
+                <a href="tel:08116709989" class="me-4"><i class="fa fa-phone-alt text-danger me-2"></i>0811-670-9989</a>
+                <a href="mailto:acehsumut@ybci.org"><i class="fa fa-envelope text-danger me-2"></i>acehsumut@ybci.org</a>
             </div>
-            <div class="col-md-6 text-center text-lg-right">
-                <div class="d-inline-flex align-items-center">
-                    <a class="text-body px-3" href="https://facebook.com/groups/193809601868961/">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a class="text-body px-3" href="https://www.instagram.com/ybci_acehsumut?igsh=bHNtYzdjam5ndmlk">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a class="text-body pl-3" href="https://youtube.com/@yarisbapaoclubindonesia?si=HD8TR9CZrIMshQ-K">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                    </a>
-                </div>
+            <div class="d-flex align-items-center gap-3">
+                <a href="https://facebook.com/groups/193809601868961/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/ybci_acehsumut?igsh=bHNtYzdjam5ndmlk" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://youtube.com/@yarisbapaoclubindonesia?si=HD8TR9CZrIMshQ-K" target="_blank"><i class="fab fa-youtube"></i></a>
             </div>
         </div>
     </div>
     <!-- Topbar End -->
 
     <!-- Navbar Start -->
-    <div class="container-fluid position-relative nav-bar p-0">
-        <div class="position-relative px-lg-5" style="z-index: 9;">
-            <nav class="navbar navbar-expand-lg bg-secondary navbar-dark py-3 py-lg-0 pl-3 pl-lg-5">
-                <a href="" class="navbar-brand">
-                    <h1 class="text-uppercase text-primary mb-1">YBCI Chapter Aceh-Sumut</h1>
-                </a>
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
-                    <div class="navbar-nav ml-auto py-0">
-                        <a href="https://ybci.org" class="nav-item nav-link active">Home</a>
-                        <div class="nav-item dropdown">
-                            </div>
-                        </div>
-                            </div>
-                        </div>
-                        <a href="contact.html" class="nav-item nav-link">Contact</a>
-                    </div>
+    <nav class="navbar navbar-expand-lg sticky-top navbar-dark">
+        <div class="container">
+            <a href="#" class="navbar-brand">
+                <h1>YBCI <span>Aceh-Sumut</span></h1>
+            </a>
+            <button type="button" class="navbar-toggler border-0" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
+                <div class="navbar-nav align-items-lg-center gap-lg-3">
+                    <a href="https://ybci.org" class="nav-link active">Home</a>
+                    <a href="#about" class="nav-link">Tentang</a>
+                    <a href="#pengurus" class="nav-link">Pengurus</a>
+                    <a href="#partners" class="nav-link">Sahabat YBCI</a>
+                    <a href="#contact" class="nav-link">Kontak</a>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfAKdIef9el8vpaiAbzZBtJWqQb4l6uBra4leHgqrbcpUtE7w/viewform" target="_blank" class="btn btn-ybci-red ms-lg-3 mt-3 mt-lg-0 py-2 px-4">Daftar Sekarang</a>
                 </div>
-            </nav>
+            </div>
         </div>
-    </div>
+    </nav>
     <!-- Navbar End -->
 
-
-   
-
-    <!-- Carousel Start -->
-    <div class="container-fluid p-0" style="margin-bottom: 90px;">
-        <div id="header-carousel" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img class="w-100" src="img/carousel-1.jpg" alt="Image">
-                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                        <div class="p-3" style="max-width: 900px;">
-                            <h4 class="text-white text-uppercase mb-md-3">Yaris Bapao Club Indonesia</h4>
-                            <h1 class="display-1 text-white mb-md-4">YBCI</h1>
-                            <a class=<a href="https://docs.google.com/forms/d/e/1FAIpQLSfAKdIef9el8vpaiAbzZBtJWqQb4l6uBra4leHgqrbcpUtE7w/viewform">Daftar Sekarang</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img class="w-100" src="img/carousel-2.jpg" alt="Image">
-                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                        <div class="p-3" style="max-width: 900px;">
-                            <h4 class="text-white text-uppercase mb-md-3">Yaris Bapao Club Indonesia</h4>
-                            <h1 class="display-1 text-white mb-md-4">Chapter Aceh Sumut</h1>
-                            <a class=<a href="https://docs.google.com/forms/d/e/1FAIpQLSfAKdIef9el8vpaiAbzZBtJWqQb4l6uBra4leHgqrbcpUtE7w/viewform">Daftar Sekarang</a>
-                        </div>
-                    </div>
-                </div>
+    <!-- Hero Section -->
+    <header class="hero-section">
+        <div class="container">
+            <h4 class="mb-3">Yaris Bapao Club Indonesia</h4>
+            <h1 class="display-3 fw-bold text-white mb-4">Chapter Aceh - Sumut</h1>
+            <p class="lead text-light mb-5 mx-auto" style="max-width: 600px;">Komunitas pecinta mobil Toyota Yaris generasi pertama (2006-2013) solid, aktif, dan berkarakter.</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfAKdIef9el8vpaiAbzZBtJWqQb4l6uBra4leHgqrbcpUtE7w/viewform" target="_blank" class="btn btn-ybci-red">Daftar Anggota</a>
+                <a href="#about" class="btn btn-outline-light-custom">Pelajari Lebih</a>
             </div>
-            <a class="carousel-control-prev" href="#header-carousel" data-slide="prev">
-                <div class="btn btn-dark" style="width: 45px; height: 45px;">
-                    <span class="carousel-control-prev-icon mb-n2"></span>
-                </div>
-            </a>
-            <a class="carousel-control-next" href="#header-carousel" data-slide="next">
-                <div class="btn btn-dark" style="width: 45px; height: 45px;">
-                    <span class="carousel-control-next-icon mb-n2"></span>
-                </div>
-            </a>
         </div>
-    </div>
-    <!-- Carousel End -->
-
+    </header>
+    <!-- Hero Section End -->
 
     <!-- About Start -->
-    <div class="container-fluid py-5">
-        <div class="container pt-5 pb-3">
-            <h1 class="display-1 text-primary text-center">01</h1>
-            <h1 class="display-4 text-uppercase text-center mb-5">Welcome To <span class="text-primary">YBCI Chapter Aceh-Sumut</span></h1>
-            <div class="row justify-content-center">
+    <section id="about" class="py-5 bg-white">
+        <div class="container py-4">
+            <div class="section-title">
+                <span class="number">01</span>
+                <h2>Welcome To <span>YBCI Aceh-Sumut</span></h2>
+            </div>
+            <div class="row align-items-center justify-content-center">
                 <div class="col-lg-10 text-center">
-                    <img class="w-75 mb-4" src="img/about.png" alt="">
-                    <p>YBCI (Yaris Bapao Club Indonesia) adalah komunitas pecinta mobil Toyota Yaris keluaran pertama tahun 2006 hingga 2013 semua type. YBCI berdiri pada tahun 2019 dengan tujuan untuk mengumpulkan pecinta mobil Yaris dari seluruh Indonesia.
-
-<p>Visi dan Misi
-<p>Visi YBCI adalah menjadi komunitas pecinta mobil Yaris terbesar dan teraktif di Indonesia. Misi YBCI adalah:
-
-<p>- Mengumpulkan pecinta mobil Yaris dari seluruh Indonesia
-<p>- Meningkatkan kesadaran dan kepedulian terhadap mobil Yaris
-<p>- Membangun silaturahmi dan persaudaraan antara anggota
-<p>- Mengadakan kegiatan yang positif dan bermanfaat bagi anggota dan masyarakat
-<p>
-<p>Keanggotaan :
-<p>YBCI membuka keanggotaan bagi pecinta mobil Yaris dari seluruh Indonesia. Untuk menjadi anggota YBCI, silakan menghubungi kami melalui kontak yang tersedia.
+                    <img class="img-fluid rounded shadow-lg mb-5 w-75 border border-danger" src="img/about.png" alt="Tentang YBCI Aceh Sumut">
+                    <p class="text-secondary lead mb-4" style="line-height: 1.8;">
+                        <strong>YBCI (Yaris Bapao Club Indonesia)</strong> adalah komunitas pecinta mobil Toyota Yaris keluaran pertama tahun 2006 hingga 2013 semua tipe. YBCI berdiri pada tahun 2019 dengan tujuan untuk mengumpulkan pecinta mobil Yaris dari seluruh Indonesia.
+                    </p>
+                    <div class="bg-custom-light p-4 p-md-5 text-start mb-5 shadow-sm">
+                        <h4 class="text-danger fw-bold mb-3"><i class="fa fa-bullseye me-2"></i> Visi & Misi</h4>
+                        <p class="mb-2 text-dark"><strong>Visi:</strong> Menjadi komunitas pecinta mobil Yaris terbesar dan teraktif di Indonesia.</p>
+                        <p class="mb-0 text-dark"><strong>Misi:</strong></p>
+                        <ul class="text-secondary mb-0">
+                            <li>Mengumpulkan pecinta mobil Yaris dari seluruh Indonesia</li>
+                            <li>Meningkatkan kesadaran dan kepedulian terhadap mobil Yaris</li>
+                            <li>Membangun silaturahmi dan persaudaraan antara anggota</li>
+                            <li>Mengadakan kegiatan positif dan bermanfaat bagi anggota dan masyarakat</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div class="row mt-3">
-                <div class="col-lg-4 mb-2">
-                    <div class="d-flex align-items-center bg-light p-4 mb-4" style="height: 150px;">
-                        <div class="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary ml-n4 mr-4" style="width: 100px; height: 100px;">
-                            <i class="fa fa-2x fa-headset text-secondary"></i>
+
+            <!-- Features Cards -->
+            <div class="row g-4 mt-2">
+                <div class="col-lg-4">
+                    <div class="card-feature d-flex align-items-center">
+                        <div class="bg-danger text-white rounded-circle d-flex align-items-center justify-content-center me-4 flex-shrink-0" style="width: 70px; height: 70px;">
+                            <i class="fa fa-headset fa-xl"></i>
                         </div>
-                        <h4 class="text-uppercase m-0">Sosialisasi keamanan berkendara</h4>
+                        <h5 class="text-uppercase m-0 fw-bold fs-6 text-dark">Sosialisasi Keamanan Berkendara</h5>
                     </div>
                 </div>
-                <div class="col-lg-4 mb-2">
-                    <div class="d-flex align-items-center bg-secondary p-4 mb-4" style="height: 150px;">
-                        <div class="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary ml-n4 mr-4" style="width: 100px; height: 100px;">
-                            <i class="fa fa-2x fa-car text-secondary"></i>
+                <div class="col-lg-4">
+                    <div class="card-feature d-flex align-items-center" style="border-left-color: #212529;">
+                        <div class="bg-dark text-white rounded-circle d-flex align-items-center justify-content-center me-4 flex-shrink-0" style="width: 70px; height: 70px;">
+                            <i class="fa fa-car fa-xl text-danger"></i>
                         </div>
-                        <h4 class="text-light text-uppercase m-0">Touring</h4>
+                        <h5 class="text-uppercase m-0 fw-bold fs-6 text-dark">Touring Gabungan & Chapter</h5>
                     </div>
                 </div>
-                <div class="col-lg-4 mb-2">
-                    <div class="d-flex align-items-center bg-light p-4 mb-4" style="height: 150px;">
-                        <div class="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary ml-n4 mr-4" style="width: 100px; height: 100px;">
-                            <i class="fa fa-2x fa-map-marker-alt text-secondary"></i>
+                <div class="col-lg-4">
+                    <div class="card-feature d-flex align-items-center">
+                        <div class="bg-danger text-white rounded-circle d-flex align-items-center justify-content-center me-4 flex-shrink-0" style="width: 70px; height: 70px;">
+                            <i class="fa fa-map-marker-alt fa-xl"></i>
                         </div>
-                        <h4 class="text-uppercase m-0">Kopdar</h4>
+                        <h5 class="text-uppercase m-0 fw-bold fs-6 text-dark">Kopdar Rutin & Silaturahmi</h5>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
     <!-- About End -->
-    
 
-    <!-- 
-
-    <!-- Banner Start -->
-    <div class="container-fluid py-5">
-        <div class="container py-5">
-            <div class="bg-banner py-5 px-4 text-center">
-                <div class="py-5">
-                    <h1 class="display-1 text-uppercase text-primary mb-4">Member Only</h1>
-                    <h1 class="text-uppercase text-light mb-4">Diskon Spesial Setiap harinya</h1>
-                    <p class="mb-4">Gassss</p>
-                    <a class="btn btn-primary mt-2 py-3 px-5" <a href="https://docs.google.com/forms/d/e/1FAIpQLSfAKdIef9el8vpaiAbzZBtJWqQb4l6uBra4leHgqrbcpUtE7w/viewform">Daftar Sekarang</a>
-                </div>
-            </div>
+    <!-- Member Promo Banner -->
+    <section class="py-5 bg-dark text-white text-center border-top border-bottom border-danger">
+        <div class="container py-4">
+            <span class="text-danger fw-bold text-uppercase tracking-wider">Eksklusif Member</span>
+            <h2 class="display-5 fw-bold text-white text-uppercase my-3">Diskon Spesial Setiap Harinya</h2>
+            <p class="text-light mb-4">Nikmati berbagai promo menarik dan fasilitas eksklusif khusus member resmi YBCI.</p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfAKdIef9el8vpaiAbzZBtJWqQb4l6uBra4leHgqrbcpUtE7w/viewform" target="_blank" class="btn btn-ybci-red py-3 px-5">Gasss Daftar Sekarang!</a>
         </div>
-    </div>
-    <!-- Banner End -->
+    </section>
+    <!-- Member Promo Banner End -->
 
-
-    <!-- Rent A Car Start -->
-    <div class="container-fluid py-5">
-        <div class="container pt-5 pb-3">
-            <h1 class="display-1 text-primary text-center">02</h1>
-            <h1 class="display-4 text-uppercase text-center mb-5">Pengurus Chapter</h1>
-            <div class="row">
-                <div class="col-lg-4 col-md-6 mb-2">
-                    <div class="rent-item mb-4">
-                        <img class="img-fluid mb-4" src="img/team-2.jpg" alt="">
-                        <h4 class="text-uppercase mb-4">Sekretaris</h4>
-                        <div class="d-flex justify-content-center mb-4">
-                            <div class="px-2">
-                                <i class="fa fa-car text-primary mr-1"></i>
-                                <span>889</span>
-                            </div>
-                            <div class="px-2 border-left border-right">
-                                <i class="fa fa-cogs text-primary mr-1"></i>
-                                <span></span>
-                            </div>
-                            <div class="px-2">
-                                <i class="fa fa-road text-primary mr-1"></i>
-                                <span></span>
-                            </div>
+    <!-- Pengurus Chapter Start -->
+    <section id="pengurus" class="py-5 bg-white">
+        <div class="container py-4">
+            <div class="section-title">
+                <span class="number">02</span>
+                <h2>Struktur <span>Pengurus Chapter</span></h2>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <!-- Sekretaris -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-card">
+                        <div class="team-img-wrapper">
+                            <img src="img/team-2.jpg" alt="Adi - Sekretaris">
                         </div>
-                        <a class="btn btn-primary px-3" href="">Adi</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-2">
-                    <div class="rent-item active mb-4">
-                        <img class="img-fluid mb-4" src="img/team-1.jpg" alt="">
-                        <h4 class="text-uppercase mb-4">Ketua</h4>
-                        <div class="d-flex justify-content-center mb-4">
-                            <div class="px-2">
-                                <i class="fa fa-car text-primary mr-1"></i>
-                                <span>026</span>
+                        <div class="p-4">
+                            <h5 class="text-uppercase fw-bold text-danger mb-1">Sekretaris</h5>
+                            <h4 class="text-dark mb-3">Adi</h4>
+                            <div class="d-flex justify-content-center gap-3 text-muted small">
+                                <span><i class="fa fa-car text-danger me-1"></i> ID: 889</span>
                             </div>
-                            <div class="px-2 border-left border-right">
-                                <i class="fa fa-cogs text-primary mr-1"></i>
-                                
-                            </div>
-                            <div class="px-2">
-                                <i class="fa fa-road text-primary mr-1"></i>
-                               
-                            </div>
-                        </div>
-                        <a class="btn btn-primary px-3" href="">Wanda</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-2">
-                    <div class="rent-item mb-4">
-                        <img class="img-fluid mb-4" src="img/team-4.jpg" alt="">
-                        <h4 class="text-uppercase mb-4">Bendahara</h4>
-                        <div class="d-flex justify-content-center mb-4">
-                            <div class="px-2">
-                                <i class="fa fa-car text-primary mr-1"></i>
-                                <span>884</span>
-                            </div>
-                            <div class="px-2 border-left border-right">
-                                <i class="fa fa-cogs text-primary mr-1"></i>
-                              
-                            </div>
-                            <div class="px-2">
-                                <i class="fa fa-road text-primary mr-1"></i>
-                             
-                            </div>
-                        </div>
-                        <a class="btn btn-primary px-3" href="">Yogi</a>
-                    </div>
-                </div>
-               
-    <!-- Rent A Car End -->
-
-
-   
-    <!-- Banner Start -->
-    <div class="container-fluid py-5">
-        <div class="container py-5">
-            <div class="row mx-0">
-                <div class="col-lg-6 px-0">
-                    <div class="px-5 bg-secondary d-flex align-items-center justify-content-between" style="height: 350px;">
-                        <img class="img-fluid flex-shrink-0 ml-n5 w-50 mr-4" src="img/banner-left.png" alt="">
-                        <div class="text-right">
-                            <h3 class="text-uppercase text-light mb-3">Ingin menjadi Sahabat YBCI?</h3>
-                            <p class="mb-4">"Sahabat YBCI adalah sponsor resmi untuk YBCI Chapter Aceh Sumut. Kami akan berkolaborasi bersama untuk membangun dan mempromosikan produk sponsor kepada masyarakat, baik bagi anggota maupun non-anggota."</p>
-                            <a class="btn btn-primary py-2 px-4" href="">Gas Lah</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 px-0">
-                    <div class="px-5 bg-dark d-flex align-items-center justify-content-between" style="height: 350px;">
-                        <div class="text-left">
-                            <h3 class="text-uppercase text-light mb-3">Sahabat media partner</h3>
-                            <p class="mb-4">"Sahabat Media Partner adalah media sosial, surat kabar cetak, dan online yang memberitakan tentang kegiatan YBCI Chapter Sumut. Kami juga akan mendukung Sahabat Media Partner dalam pemberitaannya."</p>
-                            <a class="btn btn-primary py-2 px-4" href="">Gas Lah</a>
+                <!-- Ketua -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-card border-top border-danger border-4">
+                        <div class="team-img-wrapper">
+                            <img src="img/team-1.jpg" alt="Wanda - Ketua Chapter">
                         </div>
-                        <img class="img-fluid flex-shrink-0 mr-n5 w-50 ml-4" src="img/banner-right.png" alt="">
+                        <div class="p-4">
+                            <h5 class="text-uppercase fw-bold text-danger mb-1">Ketua Chapter</h5>
+                            <h4 class="text-dark mb-3">Wanda</h4>
+                            <div class="d-flex justify-content-center gap-3 text-muted small">
+                                <span><i class="fa fa-car text-danger me-1"></i> ID: 026</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Bendahara -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-card">
+                        <div class="team-img-wrapper">
+                            <img src="img/team-4.jpg" alt="Yogi - Bendahara">
+                        </div>
+                        <div class="p-4">
+                            <h5 class="text-uppercase fw-bold text-danger mb-1">Bendahara</h5>
+                            <h4 class="text-dark mb-3">Yogi</h4>
+                            <div class="d-flex justify-content-center gap-3 text-muted small">
+                                <span><i class="fa fa-car text-danger me-1"></i> ID: 884</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Banner End -->
+    </section>
+    <!-- Pengurus Chapter End -->
 
+    <!-- Partner / Sponsorship Banners -->
+    <section class="py-5 bg-custom-light mx-3 mx-lg-5 my-5 rounded-4 border shadow-sm">
+        <div class="container py-3">
+            <div class="row g-4 align-items-center">
+                <div class="col-lg-6">
+                    <div class="p-4">
+                        <h3 class="text-uppercase text-dark fw-bold mb-3">Ingin menjadi Sahabat YBCI?</h3>
+                        <p class="text-secondary mb-4">"Sahabat YBCI adalah sponsor resmi untuk YBCI Chapter Aceh Sumut. Kami akan berkolaborasi bersama untuk membangun dan mempromosikan produk sponsor kepada masyarakat, baik bagi anggota maupun non-anggota."</p>
+                        <a href="#contact" class="btn btn-ybci-red py-2 px-4">Gas Lah</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="p-4">
+                        <h3 class="text-uppercase text-dark fw-bold mb-3">Sahabat Media Partner</h3>
+                        <p class="text-secondary mb-4">"Sahabat Media Partner adalah media sosial, surat kabar cetak, dan online yang memberitakan tentang kegiatan YBCI Chapter Sumut. Kami juga akan mendukung Sahabat Media Partner dalam pemberitaannya."</p>
+                        <a href="#contact" class="btn btn-outline-dark py-2 px-4 fw-bold rounded-pill text-uppercase">Gas Lah</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- Contact Start -->
-    <div class="container-fluid py-5">
-        <div class="container pt-5 pb-3">
-            <h1 class="display-1 text-primary text-center">03</h1>
-            <h1 class="display-4 text-uppercase text-center mb-5">Hubungi Kami</h1>
-            <div class="row">
-                <div class="col-lg-7 mb-2">
-                    <div class="contact-form bg-light mb-4" style="padding: 30px;">
+    <!-- Contact & Info Start -->
+    <section id="contact" class="py-5 bg-white">
+        <div class="container py-4">
+            <div class="section-title">
+                <span class="number">03</span>
+                <h2>Hubungi <span>Kami</span></h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-7">
+                    <div class="bg-custom-light p-4 p-md-5 h-100 shadow-sm">
                         <form>
-                            <div class="row">
-                                <div class="col-6 form-group">
-                                    <input type="text" class="form-control p-4" placeholder="Your Name" required="required">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control bg-white text-dark border-secondary p-3" placeholder="Nama Anda" required>
                                 </div>
-                                <div class="col-6 form-group">
-                                    <input type="email" class="form-control p-4" placeholder="Your Email" required="required">
+                                <div class="col-md-6">
+                                    <input type="email" class="form-control bg-white text-dark border-secondary p-3" placeholder="Email Anda" required>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control p-4" placeholder="Subject" required="required">
-                            </div>
-                            <div class="form-group">
-                                <textarea class="form-control py-3 px-4" rows="5" placeholder="Message" required="required"></textarea>
-                            </div>
-                            <div>
-                                <button class="btn btn-primary py-3 px-5" type="submit">Send Message</button>
+                                <div class="col-12">
+                                    <input type="text" class="form-control bg-white text-dark border-secondary p-3" placeholder="Subjek" required>
+                                </div>
+                                <div class="col-12">
+                                    <textarea class="form-control bg-white text-dark border-secondary p-3" rows="5" placeholder="Pesan Anda" required></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-ybci-red py-3 px-5 w-100 fw-bold" type="submit">Kirim Pesan</button>
+                                </div>
                             </div>
                         </form>
                     </div>
                 </div>
-                <div class="col-lg-5 mb-2">
-                    <div class="bg-secondary d-flex flex-column justify-content-center px-5 mb-4" style="height: 435px;">
-                        <div class="d-flex mb-3">
-                            <i class="fa fa-2x fa-map-marker-alt text-primary flex-shrink-0 mr-3"></i>
-                            <div class="mt-n1">
-                                <h5 class="text-light">Kesekretariatan Aceh</h5>
-                                <p>Jl Nurdin Ar-raniri Kel Paya Bujok  Tunong Kec Langsa Baro Kota Langsa</p>
+                <div class="col-lg-5">
+                    <div class="bg-custom-light p-4 p-md-5 h-100 d-flex flex-column justify-content-between shadow-sm">
+                        <div class="d-flex mb-4">
+                            <i class="fa fa-map-marker-alt text-danger fa-2x me-3 flex-shrink-0"></i>
+                            <div>
+                                <h5 class="text-dark fw-bold">Sekretariat Aceh</h5>
+                                <p class="text-secondary small mb-0">Jl. Nurdin Ar-raniri, Kel. Paya Bujok Tunong, Kec. Langsa Baro, Kota Langsa</p>
                             </div>
                         </div>
-                        <div class="d-flex mb-3">
-                            <i class="fa fa-2x fa-map-marker-alt text-primary flex-shrink-0 mr-3"></i>
-                            <div class="mt-n1">
-                                <h5 class="text-light">Basecamp</h5>
-                                <p>Medan Sumatera Utara</p>
+                        <div class="d-flex mb-4">
+                            <i class="fa fa-map-marker-alt text-danger fa-2x me-3 flex-shrink-0"></i>
+                            <div>
+                                <h5 class="text-dark fw-bold">Basecamp Sumut</h5>
+                                <p class="text-secondary small mb-0">Medan, Sumatera Utara</p>
                             </div>
                         </div>
-                        <div class="d-flex mb-3">
-                            <i class="fa fa-2x fa-envelope-open text-primary flex-shrink-0 mr-3"></i>
-                            <div class="mt-n1">
-                                <h5 class="text-light">Email</h5>
-                                <p>acehsumut@ybci.org</p>
+                        <div class="d-flex mb-4">
+                            <i class="fa fa-envelope text-danger fa-2x me-3 flex-shrink-0"></i>
+                            <div>
+                                <h5 class="text-dark fw-bold">Email</h5>
+                                <p class="text-secondary small mb-0">acehsumut@ybci.org</p>
                             </div>
                         </div>
                         <div class="d-flex">
-                            <i class="fa fa-2x fa-envelope-open text-primary flex-shrink-0 mr-3"></i>
-                            <div class="mt-n1">
-                                <h5 class="text-light">Whatsapp</h5>
-                                <p class="m-0">+62 811-670-9989</p>
+                            <i class="fa fa-phone text-danger fa-2x me-3 flex-shrink-0"></i>
+                            <div>
+                                <h5 class="text-dark fw-bold">WhatsApp</h5>
+                                <p class="text-secondary small mb-0">+62 811-670-9989</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
     <!-- Contact End -->
 
-<!-- Contact Start -->
-    <div class="container-fluid py-5">
-        <div class="container pt-5 pb-3">
-            
-            <h1 class="display-4 text-uppercase text-center mb-5">Sahabat YBCI</h1>
-            <div class="row">
-                 <div class="row text-center">
-      <div class="col-lg-2 col-md-4 col-6">
-        <img src="img/vendor-1.png" class="img-fluid rounded" alt="Sponsor1">
-      </div>
-      <div class="col-lg-2 col-md-4 col-6">
-        <img src="img/vendor-2.png" class="img-fluid rounded" alt="Sponsor2">
-      </div>
-      <div class="col-lg-2 col-md-4 col-6">
-        <img src="img/vendor-3.png" class="img-fluid rounded" alt="Sponsor3">
-      </div>
-      <div class="col-lg-2 col-md-4 col-6">
-        <img src="img/vendor-4.png" class="img-fluid rounded" alt="Sponsor4">
-      </div>
-      <div class="col-lg-2 col-md-4 col-6">
-        <img src="img/vendor-5.png" class="img-fluid rounded" alt="Sponsor5">
-      </div>
-      <div class="col-lg-2 col-md-4 col-6">
-        <img src="img/vendor-6.png" class="img-fluid rounded" alt="Sponsor6">
-    </div>
-  </div>
-    <!-- Contact End -->
-   
-    <!-- Footer Start -->
-    <div class="container-fluid bg-secondary py-5 px-sm-3 px-md-5" style="margin-top: 90px;">
-        <div class="row pt-5">
-            <div class="col-lg-3 col-md-6 mb-5">
-                <h4 class="text-uppercase text-light mb-4">Get In Touch</h4>
-                <p class="mb-2"><i class="fa fa-map-marker-alt text-white mr-3"></i>Jl Nurdin Ar-raniri Kel Paya Bujok  Tunong Kec Langsa Baro Kota Langsa</p>
-                <p class="mb-2"><i class="fa fa-phone-alt text-white mr-3"></i>0811-670-9989</p>
-                <p><i class="fa fa-envelope text-white mr-3"></i>acehsumut@ybci.org</p>
-                <h6 class="text-uppercase text-white py-2">Follow Us</h6>
-                <div class="d-flex justify-content-start">
-                    <a class="btn btn-lg btn-dark btn-lg-square mr-2" href="https://youtube.com/@yarisbapaoclubindonesia?si=HD8TR9CZrIMshQ-K"><i class="fab fa-youtube"></i></a>
-                    <a class="btn btn-lg btn-dark btn-lg-square mr-2" href="https://facebook.com/groups/193809601868961/"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-lg btn-dark btn-lg-square" href="https://www.instagram.com/ybci_acehsumut?igsh=bHNtYzdjam5ndmlk"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-5">
-                <h4 class="text-uppercase text-light mb-4">Usefull Links</h4>
-                <div class="d-flex flex-column justify-content-start">
-                    <a class="text-body mb-2" href="#"><i class="fa fa-angle-right text-white mr-2"></i>1</a>
-                    <a class="text-body mb-2" href="#"><i class="fa fa-angle-right text-white mr-2"></i>2</a>
-                    <a class="text-body mb-2" href="#"><i class="fa fa-angle-right text-white mr-2"></i>3</a>
-                    <a class="text-body mb-2" href="#"><i class="fa fa-angle-right text-white mr-2"></i>4</a>
-                    <a class="text-body mb-2" href="#"><i class="fa fa-angle-right text-white mr-2"></i>5</a>
-                    <a class="text-body" href="#"><i class="fa fa-angle-right text-white mr-2"></i>6</a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-5">
-                <h4 class="text-uppercase text-light mb-4">Car Gallery</h4>
-                <div class="row mx-n1">
-                    <div class="col-4 px-1 mb-2">
-                        <a href=""><img class="w-100" src="img/gallery-1.jpg" alt=""></a>
-                    </div>
-                    <div class="col-4 px-1 mb-2">
-                        <a href=""><img class="w-100" src="img/gallery-2.jpg" alt=""></a>
-                    </div>
-                    <div class="col-4 px-1 mb-2">
-                        <a href=""><img class="w-100" src="img/gallery-3.jpg" alt=""></a>
-                    </div>
-                    <div class="col-4 px-1 mb-2">
-                        <a href=""><img class="w-100" src="img/gallery-4.jpg" alt=""></a>
-                    </div>
-                    <div class="col-4 px-1 mb-2">
-                        <a href=""><img class="w-100" src="img/gallery-5.jpg" alt=""></a>
-                    </div>
-                    <div class="col-4 px-1 mb-2">
-                        <a href=""><img class="w-100" src="img/gallery-6.jpg" alt=""></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-5">
-                <h4 class="text-uppercase text-light mb-4">Berita Terkini</h4>
-                <p class="mb-4">Dapatkan info terkini tentang kegiatan kami</p>
-                <div class="w-100 mb-3">
-                    <div class="input-group">
-                        <input type="text" class="form-control bg-dark border-dark" style="padding: 25px;" placeholder="Your Email">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary text-uppercase px-3">Sign Up</button>
-                        </div>
-                    </div>
-                </div>
-                <i>YBCI Chapter Aceh-Sumut</i>
+    <!-- Sahabat YBCI / Sponsors Logo Grid -->
+    <section id="partners" class="py-5 bg-light">
+        <div class="container text-center py-3">
+            <h3 class="text-uppercase fw-bold text-dark mb-5">Sahabat YBCI</h3>
+            <div class="row g-4 justify-content-center align-items-center">
+                <div class="col-lg-2 col-md-4 col-6"><div class="sponsor-box"><img src="img/vendor-1.png" class="img-fluid opacity-75" alt="Sponsor 1"></div></div>
+                <div class="col-lg-2 col-md-4 col-6"><div class="sponsor-box"><img src="img/vendor-2.png" class="img-fluid opacity-75" alt="Sponsor 2"></div></div>
+                <div class="col-lg-2 col-md-4 col-6"><div class="sponsor-box"><img src="img/vendor-3.png" class="img-fluid opacity-75" alt="Sponsor 3"></div></div>
+                <div class="col-lg-2 col-md-4 col-6"><div class="sponsor-box"><img src="img/vendor-4.png" class="img-fluid opacity-75" alt="Sponsor 4"></div></div>
+                <div class="col-lg-2 col-md-4 col-6"><div class="sponsor-box"><img src="img/vendor-5.png" class="img-fluid opacity-75" alt="Sponsor 5"></div></div>
+                <div class="col-lg-2 col-md-4 col-6"><div class="sponsor-box"><img src="img/vendor-6.png" class="img-fluid opacity-75" alt="Sponsor 6"></div></div>
             </div>
         </div>
-    </div>
-    <div class="container-fluid bg-dark py-4 px-sm-3 px-md-5">
-        <p class="mb-2 text-center text-body">&copy; <a href="#">YBCI Aceh-Sumut</a>. All Rights Reserved.</p>
-        <p class="m-0 text-center text-body">Designed by <a href="https://bawahtangga.web.id">Want.it</a></p>
-    </div>
+    </section>
+    <!-- Sponsors End -->
+
+    <!-- Footer Start -->
+    <footer>
+        <div class="container pb-5">
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-uppercase text-light mb-4">Get In Touch</h4>
+                    <p class="small mb-2"><i class="fa fa-map-marker-alt text-danger me-2"></i>Jl. Nurdin Ar-raniri, Langsa</p>
+                    <p class="small mb-2"><i class="fa fa-phone text-danger me-2"></i>0811-670-9989</p>
+                    <p class="small mb-4"><i class="fa fa-envelope text-danger me-2"></i>acehsumut@ybci.org</p>
+                    <h6 class="text-uppercase text-white mb-3">Follow Us</h6>
+                    <div class="d-flex">
+                        <a class="social-icon" href="https://youtube.com/@yarisbapaoclubindonesia?si=HD8TR9CZrIMshQ-K" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a class="social-icon" href="https://facebook.com/groups/193809601868961/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a class="social-icon" href="https://www.instagram.com/ybci_acehsumut?igsh=bHNtYzdjam5ndmlk" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-uppercase text-light mb-4">Navigasi</h4>
+                    <ul class="list-unstyled d-flex flex-column gap-2 small">
+                        <li><a href="https://ybci.org" class="text-decoration-none">Home YBCI Pusat</a></li>
+                        <li><a href="#about" class="text-decoration-none">Tentang Komunitas</a></li>
+                        <li><a href="#pengurus" class="text-decoration-none">Struktur Pengurus</a></li>
+                        <li><a href="#partners" class="text-decoration-none">Sponsor & Media Partner</a></li>
+                        <li><a href="#contact" class="text-decoration-none">Hubungi Kami</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-uppercase text-light mb-4">Car Gallery</h4>
+                    <div class="row g-2">
+                        <div class="col-4"><img src="img/gallery-1.jpg" class="img-fluid rounded" alt="Gallery"></div>
+                        <div class="col-4"><img src="img/gallery-2.jpg" class="img-fluid rounded" alt="Gallery"></div>
+                        <div class="col-4"><img src="img/gallery-3.jpg" class="img-fluid rounded" alt="Gallery"></div>
+                        <div class="col-4"><img src="img/gallery-4.jpg" class="img-fluid rounded" alt="Gallery"></div>
+                        <div class="col-4"><img src="img/gallery-5.jpg" class="img-fluid rounded" alt="Gallery"></div>
+                        <div class="col-4"><img src="api/placeholder/100/100" class="img-fluid rounded" alt="Gallery"></div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-uppercase text-light mb-4">Berita Terkini</h4>
+                    <p class="small text-muted mb-3">Dapatkan info dan update kegiatan terbaru dari kami.</p>
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control bg-secondary text-white border-0" placeholder="Email Anda">
+                        <button class="btn btn-ybci-red" type="button">Join</button>
+                    </div>
+                    <span class="text-danger small fst-italic">YBCI Chapter Aceh-Sumut</span>
+                </div>
+            </div>
+        </div>
+        <div class="bg-black py-3 text-center border-top border-secondary small">
+            <p class="mb-1 text-muted">&copy; <a href="#" class="text-white text-decoration-none">YBCI Aceh-Sumut</a>. All Rights Reserved.</p>
+            <p class="mb-0 text-muted">Designed by <a href="https://bawahtangga.web.id" target="_blank" class="text-danger text-decoration-none">Want.it</a> (Light Theme Optimized)</p>
+        </div>
+    </footer>
     <!-- Footer End -->
 
-
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
-
-
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/tempusdominus/js/moment.min.js"></script>
-    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
-
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>
